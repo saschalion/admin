@@ -1,0 +1,11 @@
+.b-table {
+	width: 100%;
+}
+
+.b-table__column {
+	padding: 8px;
+	line-height: 20px;
+	text-align: left;
+	vertical-align: top;
+	border-top: 1px solid #DDD;
+}
