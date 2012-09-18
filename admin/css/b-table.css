@@ -1,0 +1,36 @@
+.b-table {
+	width: 100%;
+}
+
+.b-table__head  .b-table__column {
+	color: #666;
+}
+
+.b-table__body {
+	font-size: 12px;
+}
+
+.b-table__column {
+	padding: 8px;
+	line-height: 20px;
+	text-align: left;
+	vertical-align: top;
+	border-top: 1px solid #DDD;
+}
+
+.b-table__column_border_no {
+	border: none;
+}
+
+.b-table__body  .b-table__row:nth-child(even) .b-table__column {
+	background: #F8F8F8;
+}
+
+.b-table__date {
+	color: #666;
+	font-size: 10px;
+}
+
+.b-table__column_width_115 {
+	white-space: nowrap;
+}

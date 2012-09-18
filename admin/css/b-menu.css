@@ -1,0 +1,74 @@
+.b-menu {
+    margin: 15px -150px 25px;
+    text-align: center;
+}
+
+.b-menu__item {
+    margin: 0 0 0 30px;
+    display: inline-block;
+    text-align: left;
+    font-size: 18px;
+}
+
+.b-menu__item:first-child {
+    margin: 0;
+}
+
+*:first-child+html .b-menu__item {
+    display: inline;
+}
+
+.b-menu__icon, 
+.b-menu__link-text {
+	display: inline-block;
+	vertical-align: center;
+}
+
+*:first-child+html  .b-menu__icon, 
+*:first-child+html  .b-menu__link-text {
+	display: inline;
+}
+
+.b-menu__icon {
+	width: 14px;
+	height: 14px;
+	background: url(/admin/images/icons.png);
+}
+
+.b-menu__icon_icon_home {
+	background-position: 0 -24px;
+}
+
+.b-menu__icon_icon_auth {
+	background-position: -168px 0;
+}
+
+.b-menu__icon_icon_admin {
+	background-position: -96px -72px;
+}
+
+.b-menu__icon_icon_gallery {
+	background-position: -456px -48px;
+}
+
+.b-menu__icon_icon_exit {
+	background-position: -384px 0;
+}
+
+.b-menu__link {    
+	text-decoration: none;
+}
+
+.b-menu__link-text {
+	color: #286c97;
+	text-decoration: underline;
+}
+
+.b-menu__link:hover .b-menu__link-text  {    
+	color: #0F89D6;
+}
+
+.b-menu__item_state_active .b-menu__link-text, 
+.b-menu__item_state_active:hover .b-menu__link-text {
+    color: #cc0000;
+}
