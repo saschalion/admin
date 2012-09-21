@@ -19,72 +19,39 @@
     }
     else
     {
-        $pageURL .= $_SERVER["REQUEST_URI"];
-        $linkAdmin = '/admin/list.php';
-        $linkGallery = '/admin/gallery.php';
-        $linkStat = '/admin/stat.php';
+        $currentUrl = $_SERVER["REQUEST_URI"];
 
-        if($pageURL == $linkAdmin) {
-            print '
-				<li class="b-menu__item b-menu__item_state_active">
-					<a href="'.$linkAdmin.'" class="b-menu__link">					
-						<span class="b-menu__icon b-menu__icon_icon_admin"></span>
-						<span class="b-menu__link-text">Админка</span>	
-					</a>
-				</li>';
-        }
-        else {
-            print '<li class="b-menu__item">
-				<a href="'.$linkAdmin.'" class="b-menu__link">				
-					<span class="b-menu__icon b-menu__icon_icon_admin"></span>
-					<span class="b-menu__link-text">Админка</span>	
-				</a>
-			</li>';
-        }
+        $links = array(
+            '/admin/list.php' => 'Админка',
+            '/admin/gallery.php' => 'Галерея',
+            '/admin/stat.php' => 'Статистика'
+        );
 
-        if($pageURL == $linkGallery) {
-            print '
-				<li class="b-menu__item b-menu__item_state_active">
-					<a href="'.$linkGallery.'" class="b-menu__link">					
-						<span class="b-menu__icon b-menu__icon_icon_gallery"></span>
-						<span class="b-menu__link-text">Галерея</span>	
-					</a>
-				</li>';
-        }
-        else {
-            print '<li class="b-menu__item">
-				<a href="'.$linkGallery.'" class="b-menu__link">
-				<span class="b-menu__icon b-menu__icon_icon_gallery"></span>
-				<span class="b-menu__link-text">Галерея</span>					
-				</a>
-			</li>';
-        }
+        foreach($links as $link => $name) {
 
-        if($pageURL == $linkStat) {
-            print '
-				<li class="b-menu__item b-menu__item_state_active">
-					<a href="'.$linkStat.'" class="b-menu__link">					
-						<span class="b-menu__icon b-menu__icon_icon_gallery"></span>
-						<span class="b-menu__link-text">Статистика</span>	
-					</a>
-				</li>';
-        }
-        else {
-            print '<li class="b-menu__item">
-				<a href="'.$linkStat.'" class="b-menu__link">
-				<span class="b-menu__icon b-menu__icon_icon_gallery"></span>
-				<span class="b-menu__link-text">Статистика</span>					
-				</a>
-			</li>';
-        }
+            if($link == $currentUrl) {
+        ?>
 
-        print '
-		<li class="b-menu__item">
-			<a href="login.php?logout" class="b-menu__link">
-				<span class="b-menu__icon b-menu__icon_icon_exit"></span>
-				<span class="b-menu__link-text">Выход</span>
-			</a>
-		</li>';
-    }
-    ?>
+            <li class="b-menu__item b-menu__item_state_active">
+                <a class="b-menu__link">
+                    <span class="b-menu__icon b-menu__icon_icon_admin"></span>
+                    <span class="b-menu__link-text">
+                        <?=$name?>
+                    </span>
+                </a>
+            </li>
+
+        <?php } else { ?>
+
+                <li class="b-menu__item">
+                    <a href='<?=$link?>' class="b-menu__link">
+                        <span class="b-menu__icon b-menu__icon_icon_admin"></span>
+                    <span class="b-menu__link-text">
+                        <?=$name?>
+                    </span>
+                    </a>
+                </li>
+
+        <?php } }
+    } ?>
 </ul>
