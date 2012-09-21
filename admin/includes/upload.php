@@ -13,11 +13,19 @@
 				$fileMessage = "<span style='color: red;'>Размер файла превышает три мегабайта</span>";	
 			} else {
 
-				$newFileName = str_replace(' ', '_', $fileName);
+                $fileName = explode('.', $fileName);
+
+                $name = $fileName[0];
+
+                $ext = $fileName[1];
+
+                $replaceFileName = str_replace(' ', '_', $name);
+
+				$newFileName = $replaceFileName . '.' .  $ext;
 				
 				move_uploaded_file($_FILES["file"]["tmp_name"], "..".$fileFolder.$newFileName);
 				
-				$sql = mysql_query ("INSERT INTO files (url, user_id) values ('".$fileFolder.$newFileName."', '".$_SESSION['user_id']."')");
+				$sql = mysql_query ("INSERT INTO files (url, user_id) values ('". $fileFolder. $newFileName ."', '". $_SESSION['user_id'] ."')");
 				
 				$fileMessage = "<span style='color: green;'>Файл успешно загружен!</span><br/> Скопируйте ссылку файла в текстовый редактор: " . "<strong>/uploads/" . $newFileName . "</strong>";
 				

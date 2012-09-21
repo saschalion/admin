@@ -1,6 +1,6 @@
 ﻿$(function() {
 
-    $('#upload-file').live('submit', function() {
+    $('#upload-file').live('submit change', function() {
 		if($('#file').val().length > 0) {
 			$('.loading').show();
 		}

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <?php session_start(); include ('../includes/config.php'); ?>
 <?php include ('../includes/functions.php'); ?>
 <html><head><title>Админка</title>

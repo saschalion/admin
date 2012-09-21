@@ -28,26 +28,26 @@
 						?>	
 							<ul class="gallery-list clearfix">							
 								<?php
-									$sql = mysql_query("SELECT*FROM files where user_id='".$_SESSION['user_id']."' ORDER BY id DESC");
+									$sql = mysql_query("SELECT*FROM files where user_id='".escape($_SESSION['user_id'])."' ORDER BY id DESC");
 									
-									while($record = mysql_fetch_array($sql)) { 
+									while($record = mysql_fetch_array($sql)) {
 								?>
 								
 									<?php
 										if($delete) {										
-											$sqlUrl = mysql_query("SELECT url FROM files where id='".$node."'");
+											$sqlUrl = query("SELECT url FROM files where id='".$node."'");
 											
 											$recordUrl = mysql_fetch_array($sqlUrl);
 											
 											$filename =  '..' . $recordUrl['url'];
-											unlink($filename);
+
+                                            unlink($filename);
 											
-											$sql = mysql_query ("DELETE FROM files WHERE id='".$node."';");							
-											$message = "<p class='js-file-flash-message' style='color: green;'> </p>";
+											$sql = query("DELETE FROM files WHERE id='".escape($node)."';");
+                                            $redirect = "<META HTTP-EQUIV=Refresh content=0;URL=gallery.php >";
 										}
-										echo $message;
+										echo $redirect;
 									?>
-									<li><?php if($count) {} else 'Нет записей'; ?></li>
 									<li>
 										<img src="<?php echo $record['url']; ?>" alt=""/></br>
 										<div class="file-url">

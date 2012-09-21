@@ -25,10 +25,8 @@
                                 }
                                 else {
                                     sendSql();
-									$message = '<span style="color: green">Статья успешно добавлена!</span>';
-									
+                                    $message = '<span style="color: green">Статья успешно добавлена!</span>';
                                 }
-
                             }
 						?>
 						<div class="order-form-box">

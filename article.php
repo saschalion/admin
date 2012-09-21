@@ -2,9 +2,9 @@
 <?php session_start(); include ('includes/config.php'); ?>
 <?php include ('includes/functions.php'); ?>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
-<title><?php echo $metaTitle; ?></title>
-<meta name="Description" content="<?php echo $metaDesc; ?>">
-<meta name="Keywords" content="<?php echo $metaKeywords; ?>">
+<title><?= $metaTitle ?></title>
+<meta name="Description" content="<?= $metaDesc ?>">
+<meta name="Keywords" content="<?= $metaKeywords ?>">
 <meta name="robots" content="INDEX,FOLLOW">
 <meta http-equiv="content-language" content="ru">
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
@@ -19,8 +19,8 @@
             <div class="content-wrap clearfix">
 				<div class="content">
 					<div class="text">
-						<h1><?php echo $title; ?></h1>
-						<?php echo $content; ?>
+						<h1><?= $title ?></h1>
+						<?= $content ?>
 						<?php
                             if (isset($_SESSION['user_id'])) {
                                 echo '<p><a href="admin/edit.php?node='.$node.'">Редактировать</a></p>';

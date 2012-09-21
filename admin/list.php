@@ -11,26 +11,55 @@
 						<?php	
 							if (isset($_SESSION['user_id'])) {
 						?>
-						
+
+                        <?php
+
+                        function is_role($role) {
+                            if($_SESSION['role_id'] == $role) {
+                               return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+
+                        if(is_role('admin')) {
+                            echo 'Ты админ!';
+                        }
+
+                        if(is_role('user')) {
+                            echo 'Ты юзер!';
+
+
+                        }
+
+                        ?>
+
 						<?php
-							class article {
-								publiс $firstname;
-								
-								publiс function get_name() {
-									return $this->firstname;
-								}
-							}
+							function __autoload($class_name) {
+                                include('actions/class.' . $class_name . '.php');
+                            }
 
 							$obj = new article(); 
 							
-							$obj->first_name = 'alex';
-							
-							echo $obj->get_name();
+							$obj->firstname = 'alex';
+
+                            $obj->age = '25';
+
+                            if($obj->set_age($val)) {
+                                echo $obj->get_name() . ' ('. $obj->get_age() .')';
+                            }
+                            else {
+                                echo 'Тебе меньше 18ти.';
+                            }
 						?>
 						
 						<?php
 							echo '<p>Количество: ' . '<strong>' .  countPosts() . '</strong>' . '</p>';
+
 						?>
+
+                        <a href="login.php?go">Выход</a>
 						
 						<?php include('includes/pagination-conf.php'); ?>
 						

@@ -23,7 +23,7 @@
 					
                         <?php
 							$save = saveArticle($save, $title_edit, $text_edit, $meta_title, $meta_keywords, $meta_desc, $category_edit, $link_text_edit);
-							echo $save[5];
+							echo $save[1];
 						?>
 						<h1>Редактировать "<?php print $title; ?>"</h1>
 						<form action="edit.php" method="post" class="order-form">
