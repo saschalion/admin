@@ -17,8 +17,8 @@
 
                             $obj = new emp();
 
-                            $obj->firstname = 'Саша';
-                            $obj->lastname = 'Дружинин';
+                            $obj->firstname = 'Гриша';
+                            $obj->lastname = 'Иванов';
 
                             if($obj->set_age(23)) {
                                 echo $obj->full_info();
