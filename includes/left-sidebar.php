@@ -2,7 +2,7 @@
 	<div class="sidebar-block base">
 		<h2>
 			<span>
-				База знаний
+				 База знаний
 			</span>
 		</h2>
 		<ul>

@@ -1,11 +1,11 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <?php session_start(); include ('../includes/config.php'); ?>
 <?php include ('../includes/functions.php'); ?>
 <html><head><title>Админка</title>
 <meta NAME="Description" CONTENT="">
 <meta NAME="Keywords" CONTENT="">
 <meta name="robots" content="INDEX,FOLLOW">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="content-language" content="ru">
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">

@@ -1,6 +1,5 @@
 <?php 
 if($_POST) {
-	set_time_limit (0);
 		// функция читающая инфу о домене с Whois-сервера
 	function Domain ($domain){
 	$servers = array (
@@ -29,7 +28,7 @@ if($_POST) {
 
 	if ( empty ($whois)){ return; }
 	$str = '';
-	$fp = fsockopen ($whois, 43 , &$errno , &$errstr , 30 );
+	$fp = fsockopen ($whois, 43 , &$errno , &$errstr , 10 );
 	fputs ($fp, $domain."\r\n");
 	while ( !feof ($fp)) { $str .= str_replace ("\n", "\n<br>", fgets ($fp,128)); }
 	fclose ($fp);
@@ -53,23 +52,23 @@ if($_POST) {
 	$url = $_POST['search'];
 	$file = file_get_contents('http://dmoz.org/search?q=:'.$url);
 	if(preg_match('#<strong>Open\s*Directory\s*Sites</strong>#ui',$file)) {
-	echo'Сайт <b>'.$url.'</b> есть в каталоге dmoz.';
+	echo'Сайт <b>'.$url.'</b> есть в каталоге dmoz.<br/>';
 	} else{
-		echo'Сайта <b>'.$url.'</b> нет в каталоге';
+		echo'Сайта <b>'.$url.'</b> нет в каталоге<br/>';
 	}
 
 	$fileCat = file_get_contents('http://seogadget.ru/yaca?urls=:'.$url);
 	if(preg_match('#Это\s*может\s*занять#ui', $fileCat)) {
-	echo'Сайт <b>'.$url.'</b> есть в каталоге yaca.';
+	echo'Сайт <b>'.$url.'</b> есть в каталоге yaca.<br/>';
 	} else{
-		echo'Сайта <b>'.$url.'</b> нет в каталоге';
+		echo'Сайта <b>'.$url.'</b> нет в каталоге<br/>';
 	}
 
 	$fileYaca = file_get_contents('http://yaca.yandex.ru/yca/cat/?text=:'.$url);
 	if(!preg_match('#Найдено\s*по\s*сайтам\s*—\s*0#ui', $fileYaca)) {
-	echo'Сайт <b>'.$url.'</b> есть в каталоге Яндекс.';
+	echo'Сайт <b>'.$url.'</b> есть в каталоге Яндекс.<br/>';
 	} else{
-		echo'Сайта <b>'.$url.'</b> нет в каталоге Яндекс';
+		echo'Сайта <b>'.$url.'</b> нет в каталоге Яндекс<br/>';
 	}
 }  
 	function getTCY($url)
@@ -81,19 +80,11 @@ if($_POST) {
 		return $xml ? (int) substr(strstr($xml, 'value="'), 7) : false;
 	}
 	
-	$tcy = getTCY($_POST['search']);
-	echo $tcy;
-	
-	$string = file_get_contents('http://bar-navig.yandex.ru/u?ver=2&show=32&url=http://www.ya.ru');
-	
-	$xml = simplexml_load_string($string);
-
-    print_r($xml->rang);
-	
-	
+	$tcy = getTCY('ya.ru');
+	echo $tcy;	
 
 ?>
-<form action="" method="post">
+<form action="domain.php" method="post">
 <input type="search" name="search" value="<?php echo $_POST['search']; ?>"/>
 <input type="submit" value="Найти"/>
 </form>

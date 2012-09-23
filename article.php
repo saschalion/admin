@@ -1,10 +1,18 @@
 ﻿<!DOCTYPE html>
 <?php session_start(); include ('includes/config.php'); ?>
 <?php include ('includes/functions.php'); ?>
+<?php 
+	$showArticle = showArticle($node);
+	$title = $showArticle[0];
+	$content = $showArticle[1];
+	$metaTitle = $showArticle[2];
+	$metaKeywords = $showArticle[3];
+	$metaDesc = $showArticle[4];
+?>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
-<title><?= $metaTitle ?></title>
-<meta name="Description" content="<?= $metaDesc ?>">
-<meta name="Keywords" content="<?= $metaKeywords ?>">
+<title><?php echo $metaTitle; ?></title>
+<meta name="Description" content="<?php echo $metaDesc; ?>">
+<meta name="Keywords" content="<?php echo $metaKeywords; ?>">
 <meta name="robots" content="INDEX,FOLLOW">
 <meta http-equiv="content-language" content="ru">
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
@@ -19,8 +27,8 @@
             <div class="content-wrap clearfix">
 				<div class="content">
 					<div class="text">
-						<h1><?= $title ?></h1>
-						<?= $content ?>
+						<h1><?php echo $title; ?></h1>
+						<?php echo $content; ?>
 						<?php
                             if (isset($_SESSION['user_id'])) {
                                 echo '<p><a href="admin/edit.php?node='.$node.'">Редактировать</a></p>';

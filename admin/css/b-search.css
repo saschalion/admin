@@ -26,6 +26,7 @@
 .b-search__input_text {
 	position: relative;
 	width: 156px;
+	height: 30px;
 	-webkit-border-radius: 14px 0 0 14px;
 	-moz-border-radius: 14px 0 0 14px;
 	border-radius: 14px 0 0 14px;	
@@ -39,6 +40,9 @@
 	-o-transition: border linear 0.2s, box-shadow linear 0.2s;
 	transition: border linear 0.2s, box-shadow linear 0.2s;
 	z-index: 1000;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .b-search__input_text:focus {

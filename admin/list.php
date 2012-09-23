@@ -1,4 +1,4 @@
-﻿<?php include('includes/head.php'); ?>
+<?php include('includes/head.php'); ?>
 <body>
    <div class="wrap">
         <div class="header"></div>
@@ -8,58 +8,32 @@
 					<?php include('includes/menu.php'); ?>
                     <div class="text">
                         <h1>Список статей</h1>
-						<?php	
-							if (isset($_SESSION['user_id'])) {
-						?>
 
                         <?php
 
-                        function is_role($role) {
-                            if($_SESSION['role_id'] == $role) {
-                               return true;
+                            function __autoload($classname) {
+                                require_once('actions/class.' . $classname. '.php');
                             }
-                            else {
-                                return false;
+
+                            $obj = new emp();
+
+                            $obj->firstname = 'Саша';
+                            $obj->lastname = 'Дружинин';
+
+                            if($obj->set_age(23)) {
+                                echo $obj->full_info();
                             }
-                        }
-
-                        if(is_role('admin')) {
-                            echo 'Ты админ!';
-                        }
-
-                        if(is_role('user')) {
-                            echo 'Ты юзер!';
-
-
-                        }
+                            else echo 'Тебе меньше 18ти или больше 65ти!';
 
                         ?>
 
-						<?php
-							function __autoload($class_name) {
-                                include('actions/class.' . $class_name . '.php');
-                            }
-
-							$obj = new article(); 
-							
-							$obj->firstname = 'alex';
-
-                            $obj->age = '25';
-
-                            if($obj->set_age($val)) {
-                                echo $obj->get_name() . ' ('. $obj->get_age() .')';
-                            }
-                            else {
-                                echo 'Тебе меньше 18ти.';
-                            }
+						<?php	
+							if (isset($_SESSION['user_id'])) {
 						?>
 						
 						<?php
 							echo '<p>Количество: ' . '<strong>' .  countPosts() . '</strong>' . '</p>';
-
 						?>
-
-                        <a href="login.php?go">Выход</a>
 						
 						<?php include('includes/pagination-conf.php'); ?>
 						
@@ -81,7 +55,7 @@
 						?>	
 						<div class="js-results">
 							<?php $currentCategory = searchResultCategory(); ?>						
-							<?php if($_POST['title'] || $_POST['categories']) echo '<p class="js-result">Результаты поиска: <strong>' . $_POST['title'] . ' ' . $searchResultCategory . '</strong></p>'; ?>
+							<?php if($_POST['title'] || $_POST['categories']) echo '<p class="js-result">Результаты поиска: <strong>' . $_POST['title'] . ' ' . $currentCategory . '</strong></p>'; ?>
 						</div>
 						<div class="b-table-box js-b-table-box">	
 							<table class='b-table js-b-table'>							
@@ -157,7 +131,7 @@
 												</a>
 											</li>
 											<li class="b-actions__item">
-												<a class="b-actions__link js-confirm" title="Удалить" href="list.php?node=<?php echo $postrow[$i]['id']; ?>&delete=y">
+												<a class="b-actions__link js-confirm" title="Удалить" href="list.php?node=<?php echo $postrow[$i]['id']; ?>&delete=true">
 													<b class="b-actions__icon b-actions__icon_icon_delete"></b>
 													<span class="b-actions__link-text"></a>
 												</a>
@@ -172,9 +146,7 @@
 								<img src="images/ajax-loader.gif" alt=""/>
 							</div>
 						</div>
-						<?php include('includes/pagination.php'); ?>						
-						
-						
+						<?php include('includes/pagination.php'); ?>
 						<?php
 							}
 							else

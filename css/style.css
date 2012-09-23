@@ -48,6 +48,23 @@ a:hover {
     margin-bottom: 20px;
 }
 
+.logo {
+    position: absolute;
+    top: 30px;
+    left: -30px;
+    width: 331px;
+    height: 125px;
+    background: url(../images/logo.png) no-repeat;
+}
+
+.logo a {
+    display: block;
+    width: 268px;
+    height: 97px;
+    margin-left: 62px;
+    text-decoration: none;
+}
+
 .main-menu {
     margin: 0 0 25px 160px;
     padding-top: 20px;
@@ -87,6 +104,35 @@ a:hover {
 }
 
 .main-menu li a span {
+    display: block;
+}
+
+.phone {
+    position: absolute;
+    top: 30px;
+    right: -35px;
+    padding-left: 50px;
+    height: 110px;
+    background: url(../images/phone.png) no-repeat left;
+}
+
+.phone h2 {
+    width: 155px;
+    background: #ececec;
+    padding: 10px 25px;
+    font-weight: bold;
+    font-size: 33px;
+    border: 1px dashed #3f3f3f;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #af1414;
+	text-shadow: 1px 1px 0 #fff, 1px 1px 1px #3f3f3f;
+}
+
+.phone h2 span {
+    font-size: 24px;
+    color: #144c6f;
     display: block;
 }
 
@@ -297,6 +343,16 @@ a:hover {
 
 .clear {
     clear: both;
+}
+
+.corner-phone {
+    background: url(../images/phone_corner_top.png) no-repeat;
+    height: 50px;
+    position: absolute;
+    right: -34px;
+    top: 4px;
+    width: 34px;
+    z-index: 1;
 }
 
 .footer {

@@ -25,8 +25,23 @@
                                 }
                                 else {
                                     sendSql();
-                                    $message = '<span style="color: green">Статья успешно добавлена!</span>';
+									
+									$result = mysql_insert_id();
+									
+									$message = '<span style="color: green">Статья успешно добавлена!</span>';
+									
+									$to  = "saschalion@list.ru" ; 
+
+									$subject = "Добавлена новая статья: '". $_POST['my_title'] . "'";
+
+									$mailMessage = $_POST['my_text'] . '<br><br> Просмотреть можно <a href="http://cms.web-fortuna.ru/article.php?node='.$result.'">здесь</a>'; 
+
+									$headers  = "Content-type: text/html; charset=utf-8 \r\n"; 
+									$headers .= "From: saschalion@list.ru Админка"; 
+
+//									mail($to, $subject, $mailMessage, $headers);
                                 }
+
                             }
 						?>
 						<div class="order-form-box">

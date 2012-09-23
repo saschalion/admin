@@ -1,4 +1,4 @@
-﻿<?php include('includes/head.php'); ?>
+<?php include('includes/head.php'); ?>
 <?php 
 	$showArticle = showArticle($node);
 	$title = $showArticle[0];

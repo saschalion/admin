@@ -1,5 +1,5 @@
 ﻿<h2>Загрузка файлов на сервер</h2>
-<?php	
+<?php
 	if(is_uploaded_file($_FILES["file"]["tmp_name"])) {
 	
 		$fileFolder = '/uploads/';
@@ -21,11 +21,19 @@
 
                 $replaceFileName = str_replace(' ', '_', $name);
 
-				$newFileName = $replaceFileName . '.' .  $ext;
+                $newFileName = $replaceFileName . '.' .  $ext;
 				
-				move_uploaded_file($_FILES["file"]["tmp_name"], "..".$fileFolder.$newFileName);
+				$sql = query("SELECT * from files where url like('%" . $newFileName . "') OR url like('%" . $fileName . "');");
 				
-				$sql = mysql_query ("INSERT INTO files (url, user_id) values ('". $fileFolder. $newFileName ."', '". $_SESSION['user_id'] ."')");
+				$result = mysql_result($sql, 0);
+				
+				if($result) {
+					$newFileName = str_replace($name, $name . '-' . rand(0, 99999999) . '.' . $ext, $name);
+				}
+				
+				move_uploaded_file($_FILES["file"]["tmp_name"], ".." . $fileFolder . $newFileName);
+				
+				$sql = mysql_query ("INSERT INTO files (url, user_id) values ('" . escape($fileFolder.$newFileName) . "', '" . escape($_SESSION['user_id']) . "')");
 				
 				$fileMessage = "<span style='color: green;'>Файл успешно загружен!</span><br/> Скопируйте ссылку файла в текстовый редактор: " . "<strong>/uploads/" . $newFileName . "</strong>";
 				
@@ -61,3 +69,6 @@
 		<img src="images/ajax-loader.gif" alt=""/>
 	</div>
 </div>
+
+
+

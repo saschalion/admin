@@ -1,8 +1,9 @@
 ﻿$(function() {
 
-    $('#upload-file').live('submit change', function() {
+    $('#upload-file').live('change', function() {
 		if($('#file').val().length > 0) {
 			$('.loading').show();
+			$('.submit-box input').trigger('click');
 		}
 		
 		else {

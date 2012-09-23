@@ -8,7 +8,7 @@ if (isset($_GET['logout']))
 {
 	if (isset($_SESSION['user_id']))
 		unset($_SESSION['user_id']);
-
+		
 	setcookie('login', '', 0, "/");
 	setcookie('password', '', 0, "/");
 	// и переносим его на главную
@@ -16,16 +16,10 @@ if (isset($_GET['logout']))
 	exit;
 }
 
-if (isset($_GET['go']))
-{
-    header('Location: list.php');
-    exit;
-}
-
 if (isset($_SESSION['user_id']))
 {
 	// юзер уже залогинен, перекидываем его отсюда на закрытую страницу
-
+	
 	header('Location: list.php');
 	exit;
 }
@@ -33,29 +27,29 @@ if (isset($_SESSION['user_id']))
 if (!empty($_POST))
 {
 	$login = (isset($_POST['login'])) ? mysql_real_escape_string($_POST['login']) : '';
-
+	
 	$query = "SELECT `salt`
 				FROM `users`
 				WHERE `login`='{$login}'
 				LIMIT 1";
 	$sql = mysql_query($query) or die(mysql_error());
-
+	
 	if (mysql_num_rows($sql) == 1)
 	{
 		$row = mysql_fetch_assoc($sql);
-
+		
 		// итак, вот она соль, соответствующая этому логину:
 		$salt = $row['salt'];
-
+		
 		// теперь хешируем введенный пароль как надо и повторям шаги, которые были описаны выше:
 		$password = md5(md5($_POST['password']) . $salt);
-
+		
 		// и пошло поехало...
 
 		// делаем запрос к БД
 		// и ищем юзера с таким логином и паролем
 
-		$query = "SELECT `id`, `role`
+		$query = "SELECT `id`
 					FROM `users`
 					WHERE `login`='{$login}' AND `password`='{$password}'
 					LIMIT 1";
@@ -67,22 +61,20 @@ if (!empty($_POST))
 			// то мы ставим об этом метку в сессии (допустим мы будем ставить ID пользователя)
 
 			$row = mysql_fetch_assoc($sql);
-
 			$_SESSION['user_id'] = $row['id'];
-
-            $_SESSION['role_id'] = $row['role'];
-
+			
+			
 			// если пользователь решил "запомнить себя"
 			// то ставим ему в куку логин с хешем пароля
-
+			
 			$time = 86400; // ставим куку на 24 часа
-
+			
 			if (isset($_POST['remember']))
 			{
 				setcookie('login', $login, time()+$time, "/");
 				setcookie('password', $password, time()+$time, "/");
 			}
-
+			
 			// и перекидываем его на закрытую страницу
 			header('Location: list.php');
 			exit;
@@ -116,9 +108,9 @@ if (!empty($_POST))
 	<h1 class="b-login__title">
 		Авторизация
 	</h1>
-	<form action="login.php" method="post" class="b-login__form">
+	<form action="login.php" method="post" class="b-login__form">		
 		<div class="b-login__form-inner">
-			<?php if($message) { ?>
+			<?php if($message) { ?>		
 				<p class="b-login__message">
 					<?php echo $message; ?>
 				</p>
@@ -150,7 +142,7 @@ if (!empty($_POST))
 			<p class="b-login__submit">
 				<input type="submit" class="b-login__input_submit" value="Войти"/>
 			</p>
-		</div>
+		</div>		
 	</form>
 </div>
 </body>
