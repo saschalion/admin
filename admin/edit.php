@@ -1,12 +1,12 @@
 <?php include('includes/head.php'); ?>
 <?php 
-	$showArticle = show_article($node);
-	$title = $showArticle[0];
-	$content = $showArticle[1];
-	$metaTitle = $showArticle[2];
-	$metaKeywords = $showArticle[3];
-	$metaDesc = $showArticle[4];
-	$linkText = $showArticle[5];
+	$show_article = show_article($node);
+	$title = $show_article[0];
+	$content = $show_article[1];
+	$meta_title = $show_article[2];
+	$meta_keywords = $show_article[3];
+	$meta_desc = $show_article[4];
+	$link_text = $show_article[5];
 ?>
 <body>
     <div class="wrap">
@@ -25,19 +25,19 @@
 							$save = save_article($save, $title_edit, $text_edit, $meta_title, $meta_keywords, $meta_desc, $category_edit, $link_text_edit);
 							echo $save[1];
 						?>
-						<h1>Редактировать "<?php print $title; ?>"</h1>
+						<h1>Редактировать "<?=$title?>"</h1>
 						<form action="edit.php" method="post" class="order-form">
 						    <div class="label-box">
 								<label for="title">
 									Заголовок
 								</label>
-								<input name="title_edit" id="title" type="text" value="<?php echo $title; ?>">
+								<input name="title_edit" id="title" type="text" value="<?=$title?>">
 							</div>
 							<div class="label-box">
 								<label for="desc">
 									Описание								
 								</label>
-								<textarea name="text_edit" id="desc" rows="15"><?php echo $content; ?></textarea>
+								<textarea name="text_edit" id="desc" rows="15"><?=$content?></textarea>
 							</div>
 							<div class="label-box">
                                 <label for="meta-title">
@@ -51,25 +51,25 @@
                                     <label for="link-text">
                                         Текст ссылки
                                     </label>
-                                    <input name="link_text_edit" id="link-text" type="text" value="<?php echo $linkText; ?>">
+                                    <input name="link_text_edit" id="link-text" type="text" value="<?=$link_text?>">
                                 </div>
 							<div class="label-box">
 								<label for="meta-title">
 									Title
 								</label>
-								<input name="meta_title" id="meta-title" type="text" value="<?php echo $metaTitle; ?>">
+								<input name="meta_title" id="meta-title" type="text" value="<?=$meta_title?>">
 							</div>
 							<div class="label-box">
 								<label for="meta-keywords">
 									Meta Keywords
 								</label>
-								<input name="meta_keywords" id="meta-keywords" type="text" value="<?php echo $metaKeywords; ?>">
+								<input name="meta_keywords" id="meta-keywords" type="text" value="<?=$meta_keywords?>">
 							</div>
 							<div class="label-box">
 								<label for="meta-desc">
 									Meta Description
 								</label>
-								<input name="meta_desc" id="meta-desc" type="text" value="<?php echo $metaDesc; ?>">
+								<input name="meta_desc" id="meta-desc" type="text" value="<?=$meta_desc?>">
 							</div>
 							<p class="submit-box">
 								<input name="save" type="submit" value="Сохранить">

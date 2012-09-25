@@ -14,7 +14,7 @@ function query($value) {
 
 // Показать все записи списком
 
-function listSql() {
+function list_sql() {
 	$sql = query("SELECT*FROM pages");
 	  while($record = mysql_fetch_array($sql))
 		{
@@ -41,7 +41,7 @@ function send_sql() {
 
     if(count($array) > 0) {
         foreach($array as $key => $value) {
-            $value = escape($value);
+            $value = escape(trim($value));
             $value =  "'$value'";
             $array_keys[] = $key;
             $array_values[] = $value;
@@ -90,7 +90,7 @@ function save_article($save, $title_edit, $text_edit, $meta_title, $meta_keyword
         if (count($array) > 0) {
             foreach ($array as $key => $value) {
 
-                $value = mysql_real_escape_string($value);
+                $value = escape(trim($value));
                 $value = "'$value'";
                 $updates[] = "$key = $value";
             }

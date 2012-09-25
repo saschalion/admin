@@ -13,13 +13,13 @@
 								<strong>
 									Доступное пространство:	
 								</strong>
-								<?php echo $disc_free_space; ?>
+								<?=$disc_free_space?>
 							</small>
 							<small>
 								<strong>
 									из	
 								</strong>
-								<?php echo $disc_total_space; ?>
+								<?=$disc_total_space?>
 							</small>
 							<br><br>
                             <ul class="b-actions clearfix">
@@ -51,15 +51,15 @@
                                         <?php gallery_delete($delete, $node); ?>
 
                                         <li>
-                                            <img src="<?php echo $record['url']; ?>" alt=""/></br>
+                                            <img src="<?=$record['url']?>" alt=""/></br>
                                             <div class="file-url">
-                                                <strong>Ссылка</strong>: <?php echo $record['url']; ?>
+                                                <strong>Ссылка</strong>: <?=$record['url']?>
                                             </div>
-                                            <a class="b-actions__link js-confirm" href="gallery.php?node=<?php echo $record['id']; ?>&delete=true">
+                                            <a class="b-actions__link js-confirm" href="gallery.php?node=<?=$record['id']?>&delete=true">
                                                 <b class="b-actions__icon b-actions__icon_icon_delete"></b>
                                                 <span class="b-actions__link-text">Удалить</a>
                                             </a>
-                                            <input type="checkbox" name="check[]" class="js-checkbox" value="<?php echo $record['id']; ?>"/>
+                                            <input type="checkbox" name="check[]" class="js-checkbox" value="<?=$record['id']?>"/>
 
                                             <?php used_pictures($record) ?>
                                         </li>

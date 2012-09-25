@@ -64,21 +64,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="gallery.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/gallery.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="40" selection-start="409" selection-end="409" vertical-scroll-proportion="-7.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="functions.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/includes/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="405" column="0" selection-start="11056" selection-end="11056" vertical-scroll-proportion="3.6319017">
+            <state line="92" column="45" selection-start="2299" selection-end="2299" vertical-scroll-proportion="0.74233127">
               <folding>
-                <marker date="1348576475997" expanded="false" signature="1539:1552" placeholder="..." />
+                <marker date="1348577399021" expanded="false" signature="1546:1559" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -94,13 +85,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/includes/left-sidebar.php" />
-        <option value="$PROJECT_DIR$/includes/footer.php" />
-        <option value="$PROJECT_DIR$/admin/actions/class.emp.php" />
-        <option value="$PROJECT_DIR$/admin/js/gallery.js" />
         <option value="$PROJECT_DIR$/admin/css/b-actions.css" />
         <option value="$PROJECT_DIR$/admin/css/main.css" />
-        <option value="$PROJECT_DIR$/admin/list.php" />
         <option value="/media/TRANSCEND/Новая папка/site96 ynvest.ru/css/html5-begin.css" />
         <option value="/media/TRANSCEND/Новая папка/site96 ynvest.ru/index.htm" />
         <option value="/media/TRANSCEND/Новая папка/site96 ynvest.ru/css/main.css" />
@@ -108,7 +94,12 @@
         <option value="$PROJECT_DIR$/includes/header.php" />
         <option value="$PROJECT_DIR$/includes/config.php" />
         <option value="$PROJECT_DIR$/admin/includes/menu.php" />
+        <option value="$PROJECT_DIR$/article.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/admin/edit.php" />
         <option value="$PROJECT_DIR$/admin/gallery.php" />
+        <option value="$PROJECT_DIR$/admin/list.php" />
+        <option value="$PROJECT_DIR$/admin/new.php" />
         <option value="$PROJECT_DIR$/includes/functions.php" />
       </list>
     </option>
@@ -165,6 +156,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -279,6 +284,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32915717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2889957" sideWeight="0.6708428" order="0" side_tool="false" content_ui="combo" />
@@ -293,7 +299,6 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32915717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -359,31 +364,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="602" column="28" selection-start="18188" selection-end="18188" vertical-scroll-proportion="0.018115941" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/left-sidebar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="18" selection-start="137" selection-end="137" vertical-scroll-proportion="0.14492753" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="24" selection-start="72" selection-end="72" vertical-scroll-proportion="0.036231883" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/actions/class.emp.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="30" selection-start="331" selection-end="331" vertical-scroll-proportion="0.28985506" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="31" selection-start="340" selection-end="340" vertical-scroll-proportion="-10.144366" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/js/gallery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="25" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0" />
@@ -392,11 +372,6 @@
     <entry file="file://$PROJECT_DIR$/admin/css/b-actions.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="33" selection-start="927" selection-end="927" vertical-scroll-proportion="0.80985916" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="42" selection-start="1215" selection-end="1215" vertical-scroll-proportion="-0.30674848" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/css/b-menu.css">
@@ -437,25 +412,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/edit.php">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="295" selection-end="295" vertical-scroll-proportion="0.19927536">
+        <state line="25" column="39" selection-start="993" selection-end="993" vertical-scroll-proportion="0.45289856">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="27" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.54347825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.4311594">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/gallery.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="40" selection-start="409" selection-end="409" vertical-scroll-proportion="-7.5">
+        <state line="18" column="40" selection-start="539" selection-end="539" vertical-scroll-proportion="-11.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="143" selection-start="4473" selection-end="4473" vertical-scroll-proportion="-68.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/new.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="59" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.5072464">
+          <folding>
+            <marker date="1348577242456" expanded="false" signature="724:738" placeholder="..." />
+            <marker date="1348577242456" expanded="false" signature="1090:1102" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="115" selection-start="2489" selection-end="2489" vertical-scroll-proportion="1.1775362">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="405" column="0" selection-start="11056" selection-end="11056" vertical-scroll-proportion="3.6319017">
+        <state line="92" column="45" selection-start="2299" selection-end="2299" vertical-scroll-proportion="0.74233127">
           <folding>
-            <marker date="1348576475997" expanded="false" signature="1539:1552" placeholder="..." />
+            <marker date="1348577399021" expanded="false" signature="1546:1559" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -8,38 +8,15 @@
 					<?php include('includes/menu.php'); ?>
                     <div class="text">
                         <h1>Список статей</h1>
-
-<!--                        --><?php
-//
-//                            function __autoload($classname) {
-//                                require_once('actions/class.' . $classname. '.php');
-//                            }
-//
-//                            $obj = new emp();
-//
-//                            $obj->firstname = 'Саша';
-//                            $obj->lastname = 'Дружинин';
-//
-//                            if($obj->set_age(23)) {
-//                                echo $obj->full_info();
-//                            }
-//                            else echo 'Тебе меньше 18ти или больше 65ти!';
-//
-//                        ?>
-
 						<?php	
 							if (isset($_SESSION['user_id'])) {
+                            echo '<p>Количество: ' . '<strong>' .  get_count_posts() . '</strong>' . '</p>';
+                            include('includes/pagination-conf.php');
 						?>
-						
-						<?php
-							echo '<p>Количество: ' . '<strong>' .  get_count_posts() . '</strong>' . '</p>';
-						?>
-						
-						<?php include('includes/pagination-conf.php'); ?>
 						
 						<form action="list.php" method="post" class="b-search js-b-search">
 							<div class="b-search__fields">
-								<input type="text" name="title" value="<?php echo $title; ?>" placeholder="название или id" class="b-search__input_text js-b-search__input_text"/>
+								<input type="text" name="title" value="<?=$title?>" placeholder="название или id" class="b-search__input_text js-b-search__input_text"/>
 								<input type="submit" value="Искать" class="b-search__input_submit js-b-search__input_submit"/>
 							</div>
 							<select name="categories" class="b-search__select js-b-search__select">
@@ -54,8 +31,8 @@
 							echo $article[1];
 						?>	
 						<div class="js-results">
-							<?php $currentCategory = search_result_category(); ?>
-							<?php if($_POST['title'] || $_POST['categories']) echo '<p class="js-result">Результаты поиска: <strong>' . $_POST['title'] . ' ' . $currentCategory . '</strong></p>'; ?>
+							<?php $current_category = search_result_category(); ?>
+							<?php if($_POST['title'] || $_POST['categories']) echo '<p class="js-result">Результаты поиска: <strong>' . $_POST['title'] . ' ' . $current_category . '</strong></p>'; ?>
 						</div>
 						<div class="b-table-box js-b-table-box">	
 							<table class='b-table js-b-table'>							
@@ -108,30 +85,30 @@
 								
 								<tr class="b-table__row">
 									<td class="b-table__column">
-										<?php print $postrow[$i]['id']; ?>
+										<?=$postrow[$i]['id']?>
 									</td>
 									<td class="b-table__column">
-										<?php print $postrow[$i]['title']; ?>
+										<?=$postrow[$i]['title']?>
 									</td>
 									<td class="b-table__column">
-										<?php print $postrow[$i]['name']; ?>
+										<?=$postrow[$i]['name']?>
 									</td>
 									<td class="b-table__column b-table__column_width_115">
 										<ul class="b-actions clearfix">
 											<li class="b-actions__item">
-												<a class="b-actions__link" title="Редактировать" href="edit.php?node=<?php print $postrow[$i]['id']; ?>">
+												<a class="b-actions__link" title="Редактировать" href="edit.php?node=<?=$postrow[$i]['id']?>">
 													<b class="b-actions__icon b-actions__icon_icon_edit"></b>
 													<span class="b-actions__link-text"></a>
 												</a>
 											</li>
 											<li class="b-actions__item">
-												<a class="b-actions__link" title="Просмотр" href="../article.php?node=<?php print $postrow[$i]['id']; ?>">
+												<a class="b-actions__link" title="Просмотр" href="../article.php?node=<?=$postrow[$i]['id']?>">
 													<b class="b-actions__icon b-actions__icon_icon_view"></b>
 													<span class="b-actions__link-text"></a>
 												</a>
 											</li>
 											<li class="b-actions__item">
-												<a class="b-actions__link js-confirm" title="Удалить" href="list.php?node=<?php echo $postrow[$i]['id']; ?>&delete=true">
+												<a class="b-actions__link js-confirm" title="Удалить" href="list.php?node=<?=$postrow[$i]['id']?>&delete=true">
 													<b class="b-actions__icon b-actions__icon_icon_delete"></b>
 													<span class="b-actions__link-text"></a>
 												</a>
