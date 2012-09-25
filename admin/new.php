@@ -24,7 +24,7 @@
 									$value = array($my_title, $my_text, $meta_title, $meta_keywords, $meta_desc, $link_text);
                                 }
                                 else {
-                                    sendSql();
+                                    send_sql();
 									
 									$result = mysql_insert_id();
 									
@@ -67,7 +67,7 @@
                                         Категория
                                     </label>
                                     <select name="categories" id="categories">
-                                        <?php showCategories(); ?>
+                                        <?php show_categories(); ?>
                                     </select>
                                 </div>
 								<div class="label-box">

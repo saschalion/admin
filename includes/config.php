@@ -14,7 +14,7 @@ $dbname="cms";
 //Подключение к базе данных
 $dbcnx = @mysql_connect($dblocation, $dbuser, $dbpasswd);
 
-//mysql_query ("set names='UTF8'");
+mysql_query ("set names='UTF8'");
 mysql_query ("set character_set_client='UTF8'");
 mysql_query ("set character_set_results='UTF8'");
 mysql_query ("set collation_connection='UTF8'");

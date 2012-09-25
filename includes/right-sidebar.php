@@ -4,7 +4,7 @@
 			<span>Новое на сайте</span>
 		</h2>
 		<ul>
-			<?php lastArticles($node); ?>
+			<?php last_articles($node); ?>
 		</ul>
 		<div class="sidebar-shadow"></div>
 	</div>
@@ -13,7 +13,7 @@
 			<span>Видеокурс по ремонту</span>
 		</h2>
 		<ul>
-			<?php showVideoCourseArticles(); ?>
+			<?php show_video_course_articles(); ?>
 		</ul>
 		<div class="sidebar-shadow"></div>
 	</div>

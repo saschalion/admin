@@ -6,7 +6,7 @@
 			</span>
 		</h2>
 		<ul>
-			<?php showKnowledgeArticles(); ?>
+			<?php show_knowledge_articles(); ?>
 		</ul>
 		<div class="sidebar-shadow"></div>
 	</div>
@@ -17,7 +17,7 @@
 			</span>
 		</h2>
 		<ul>
-			<?php showSettingArticles(); ?>
+			<?php show_setting_articles(); ?>
 		</ul>
 		<div class="sidebar-shadow"></div>
 	</div>
@@ -26,7 +26,7 @@
 			<span>Ремонт</span>
 		</h2>
 		<ul>
-			<?php showRepairArticles(); ?>
+			<?php show_repair_articles(); ?>
 		</ul>
 		<div class="sidebar-shadow"></div>
 	</div>

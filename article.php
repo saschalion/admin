@@ -2,7 +2,7 @@
 <?php session_start(); include ('includes/config.php'); ?>
 <?php include ('includes/functions.php'); ?>
 <?php 
-	$showArticle = showArticle($node);
+	$showArticle = show_article($node);
 	$title = $showArticle[0];
 	$content = $showArticle[1];
 	$metaTitle = $showArticle[2];

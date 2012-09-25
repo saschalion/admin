@@ -21,7 +21,6 @@
 .b-menu__icon, 
 .b-menu__link-text {
 	display: inline-block;
-	vertical-align: center;
 }
 
 *:first-child+html  .b-menu__icon, 
@@ -55,6 +54,10 @@
 	background-position: -384px 0;
 }
 
+.b-menu__icon_icon_stat {
+    background-position: -312px -24px;
+}
+
 .b-menu__link {    
 	text-decoration: none;
 }
@@ -71,4 +74,5 @@
 .b-menu__item_state_active .b-menu__link-text, 
 .b-menu__item_state_active:hover .b-menu__link-text {
     color: #cc0000;
+    text-decoration: none;
 }

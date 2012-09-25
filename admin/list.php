@@ -32,7 +32,7 @@
 						?>
 						
 						<?php
-							echo '<p>Количество: ' . '<strong>' .  countPosts() . '</strong>' . '</p>';
+							echo '<p>Количество: ' . '<strong>' .  get_count_posts() . '</strong>' . '</p>';
 						?>
 						
 						<?php include('includes/pagination-conf.php'); ?>
@@ -44,17 +44,17 @@
 							</div>
 							<select name="categories" class="b-search__select js-b-search__select">
 								<option value="0">выбрать категорию</option>
-								<?php showCategories(); ?>
+								<?php show_categories(); ?>
 							</select>
 							<input type="reset" value="Очистить" class="b-search__input_reset js-b-search__input_reset"/>
 						</form>
 						
 						<?php						
-							$article = deleteArticle($delete, $node);						
+							$article = delete_article($delete, $node);
 							echo $article[1];
 						?>	
 						<div class="js-results">
-							<?php $currentCategory = searchResultCategory(); ?>						
+							<?php $currentCategory = search_result_category(); ?>
 							<?php if($_POST['title'] || $_POST['categories']) echo '<p class="js-result">Результаты поиска: <strong>' . $_POST['title'] . ' ' . $currentCategory . '</strong></p>'; ?>
 						</div>
 						<div class="b-table-box js-b-table-box">	

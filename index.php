@@ -2,7 +2,7 @@
 <?php include ('includes/config.php'); ?>
 <?php include ('includes/functions.php'); ?>
 <?php 
-	$showArticle = showHomeArticle();
+	$showArticle = show_home_article();
 	$title = $showArticle[0];
 	$content = $showArticle[1];
 	$metaTitle = $showArticle[2];

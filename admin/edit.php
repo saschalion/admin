@@ -1,6 +1,6 @@
 <?php include('includes/head.php'); ?>
 <?php 
-	$showArticle = showArticle($node);
+	$showArticle = show_article($node);
 	$title = $showArticle[0];
 	$content = $showArticle[1];
 	$metaTitle = $showArticle[2];
@@ -22,7 +22,7 @@
 						<?php include('includes/upload.php'); ?>
 					
                         <?php
-							$save = saveArticle($save, $title_edit, $text_edit, $meta_title, $meta_keywords, $meta_desc, $category_edit, $link_text_edit);
+							$save = save_article($save, $title_edit, $text_edit, $meta_title, $meta_keywords, $meta_desc, $category_edit, $link_text_edit);
 							echo $save[1];
 						?>
 						<h1>Редактировать "<?php print $title; ?>"</h1>
@@ -44,7 +44,7 @@
                                     Категория
                                 </label>
                                 <select name="category_edit">
-                                    <?php showCurrentCategory($node); ?>
+                                    <?php show_current_category($node); ?>
                                 </select>
                             </div>
 							<div class="label-box">

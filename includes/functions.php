@@ -26,7 +26,7 @@ function listSql() {
 
 // Создание записи
 
-function sendSql() {
+function send_sql() {
 
     $array = array(
         'title'         => $_POST['my_title'],
@@ -43,23 +43,23 @@ function sendSql() {
         foreach($array as $key => $value) {
             $value = escape($value);
             $value =  "'$value'";
-            $arrayKeys[] = $key;
-            $arrayValues[] = $value;
+            $array_keys[] = $key;
+            $array_values[] = $value;
         }
     }
 
-    $implodeKey = implode(', ', $arrayKeys);
+    $implode_key = implode(', ', $array_keys);
 
-    $implodeValue = implode(', ', $arrayValues);
+    $implode_value = implode(', ', $array_values);
 
-    $sql = query("INSERT INTO pages($implodeKey) values($implodeValue)");
+    $sql = query("INSERT INTO pages($implode_key) values($implode_value)");
 
     return $sql;
 }
 
 // Удаление записи
 
-function deleteArticle($delete, $node) {
+function delete_article($delete, $node) {
 
 	if($delete) {
 		$sql = query("DELETE FROM pages WHERE id='".escape($node)."';");
@@ -71,7 +71,7 @@ function deleteArticle($delete, $node) {
 
 // Сохранение записи
 
-function saveArticle($save, $title_edit, $text_edit, $meta_title, $meta_keywords, $meta_desc, $category_edit, $link_text_edit) {
+function save_article($save, $title_edit, $text_edit, $meta_title, $meta_keywords, $meta_desc, $category_edit, $link_text_edit) {
 
     if($save) {
 
@@ -96,9 +96,9 @@ function saveArticle($save, $title_edit, $text_edit, $meta_title, $meta_keywords
             }
         }
 
-        $implodeArray = implode(', ', $updates);
+        $implode_array = implode(', ', $updates);
 
-        $sql = query("UPDATE pages SET $implodeArray where id=$sid");
+        $sql = query("UPDATE pages SET $implode_array where id=$sid");
 
         $redirect = "<META HTTP-EQUIV=Refresh content=0;URL=list.php >";
 
@@ -109,7 +109,7 @@ function saveArticle($save, $title_edit, $text_edit, $meta_title, $meta_keywords
 
 // Отображение записи
 
-function showArticle($node) {
+function show_article($node) {
 
 	$sql = query("select * FROM pages where id='".escape($node)."';");
 	
@@ -117,14 +117,14 @@ function showArticle($node) {
 	{
 		$title = $record['title'];
 		$content = $record['content'];
-		$linkText = $record['link_text'];
+		$link_text = $record['link_text'];
 		
-		$metaTitle = $record['meta_title'];
-		$metaKeywords = $record['meta_keywords'];
-		$metaDesc = $record['meta_desc'];
+		$meta_title = $record['meta_title'];
+		$meta_keywords = $record['meta_keywords'];
+		$meta_desc = $record['meta_desc'];
 	}
 	
-	return array($title, $content, $metaTitle, $metaKeywords, $metaDesc, $linkText);
+	return array($title, $content, $meta_title, $meta_keywords, $meta_desc, $link_text);
 }
 
 // Mime-types
@@ -145,7 +145,7 @@ function get_mime_type($file) {
 
 // Отображение полезного
 
-function showUseful($node) {
+function show_useful($node) {
 
 	$sql = query("SELECT * FROM pages where id!='".escape($node)."' order by rand() LIMIT 3");
 	
@@ -158,7 +158,7 @@ function showUseful($node) {
 
 // Отображение списка категорий
 
-function showCategories() {
+function show_categories() {
 
 	$sql = query("SELECT * FROM categories");
 
@@ -171,12 +171,12 @@ function showCategories() {
 
 // Отображение списка категорий с активной категорией
 
-function showCurrentCategory($node) {
+function show_current_category($node) {
 
-	$sqlCurrent = query("SELECT categories.id FROM categories, pages where pages.category_id=categories.id AND pages.id='".escape($node)."';");
+	$sql_current = query("SELECT categories.id FROM categories, pages where pages.category_id=categories.id AND pages.id='".escape($node)."';");
     $sql = query("SELECT * FROM categories");
 
-    $result = mysql_result($sqlCurrent, 0);
+    $result = mysql_result($sql_current, 0);
 
 
     do {
@@ -195,7 +195,7 @@ function showCurrentCategory($node) {
 
 // Количество записей
 
-function countPosts() {
+function get_count_posts() {
 	$result = query("SELECT COUNT(*) FROM pages WHERE user_id='".escape($_SESSION['user_id'])."'");
 	$posts = mysql_result($result, 0); 
 	
@@ -204,51 +204,51 @@ function countPosts() {
 
 // Недавние записи (рандомно)
 
-function recentArticles($node) {
+function recent_articles($node) {
 	$sql = query("SELECT pages.id, pages.title FROM pages, categories where pages.category_id=categories.id AND pages.id!='".escape($node)."' AND categories.name_code!='home' order by rand() LIMIT 5");
 	while($record = mysql_fetch_array($sql)) {
-		$recentArticle = print '<li><a href="/article.php?node='.$record['id'].'">'.$record['title'].'</a></li>';
+        $recent_article = print '<li><a href="/article.php?node='.$record['id'].'">'.$record['title'].'</a></li>';
 	}
 	
-	return $recentArticle;
+	return $recent_article;
 }
 
 // Отображение Базы знаний
 
-function showKnowledgeArticles() {
+function show_knowledge_articles() {
 	$sql = query("SELECT pages.id, pages.link_text FROM pages, categories WHERE pages.category_id = categories.id AND categories.name_code IN('".escape('knowledge_base')."') order by id desc");
 	while($record = mysql_fetch_array($sql)) {
-		$recentArticle = print '<li><a href="/article.php?node='.$record['id'].'">'.$record['link_text'].'</a></li>';
+        $recent_article = print '<li><a href="/article.php?node='.$record['id'].'">'.$record['link_text'].'</a></li>';
 	}
 
-	return $recentArticle;
+	return $recent_article;
 }
 
 // Отображение Настройки
 
-function showSettingArticles() {
+function show_setting_articles() {
 	$sql = query("SELECT pages.* FROM pages, categories where pages.category_id=categories.id AND categories.name_code IN('".escape('setting')."') order by id desc");
-	while($record = mysql_fetch_array($sql)) {	
-		$recentArticle = print '<li><a href="/article.php?node='.$record['id'].'">'.$record['link_text'].'</a></li>';
+	while($record = mysql_fetch_array($sql)) {
+        $recent_article = print '<li><a href="/article.php?node='.$record['id'].'">'.$record['link_text'].'</a></li>';
 	}
 
-	return $recentArticle;
+	return $recent_article;
 }
 
 // Отображение Ремонта
 
-function showRepairArticles() {
+function show_repair_articles() {
 	$sql = query("SELECT pages.* FROM pages, categories where pages.category_id=categories.id AND categories.name_code IN('".escape('repair')."') order by id desc");
 	while($record = mysql_fetch_array($sql)) {
-		$recentArticle = print '<li><a href="/article.php?node='.$record['id'].'">'.$record['link_text'].'</a></li>';
+		$recent_article = print '<li><a href="/article.php?node='.$record['id'].'">'.$record['link_text'].'</a></li>';
 	}
 
-	return $recentArticle;
+	return $recent_article;
 }
 
 // Отображение Видео-курсов
 
-function showVideoCourseArticles() {
+function show_video_course_articles() {
 	$sql = query("SELECT pages.* FROM pages, categories where pages.category_id=categories.id AND categories.name_code IN('".escape('video_course')."') order by id desc");
 	while($record = mysql_fetch_array($sql)) {
 		$recentArticle = print '<li><a href="/article.php?node='.$record['id'].'">'.$record['link_text'].'</a></li>';
@@ -259,23 +259,23 @@ function showVideoCourseArticles() {
 
 // Отображение статьи на главной
 
-function showHomeArticle() {
+function show_home_article() {
 	$sql = query("SELECT pages.* FROM pages, categories where pages.category_id=categories.id AND categories.name_code IN('".escape('home')."') order by id desc");
 	while($record = mysql_fetch_array($sql)) {
 		$title = $record['title'];
 		$content = $record['content'];
 		
-		$metaTitle = $record['meta_title'];
-		$metaKeywords = $record['meta_keywords'];
-		$metaDesc = $record['meta_desc'];
+		$meta_title = $record['meta_title'];
+		$meta_keywords = $record['meta_keywords'];
+		$meta_desc = $record['meta_desc'];
 	}
 
-	return array($title, $content, $metaTitle, $metaKeywords, $metaDesc);
+	return array($title, $content, $meta_title, $meta_keywords, $meta_desc);
 }
 
 // Последние статьи
 
-function lastArticles($node) {
+function last_articles($node) {
 
 	$sql = query("SELECT * FROM pages where id!='".$node."' order by id desc LIMIT 5");
 
@@ -288,13 +288,13 @@ function lastArticles($node) {
 
 // Отображение активной категории в поиске
 
-function showCurrentSearchCategory() {
+function show_current_search_category() {
 
-	$sqlCurrent = query("SELECT * FROM categories, pages where pages.category_id=categories.id WHERE id='".escape($_POST['categories'])."';");
+	$sql_current = query("SELECT * FROM categories, pages where pages.category_id=categories.id WHERE id='".escape($_POST['categories'])."';");
 	
     $sql = query("SELECT * FROM categories");
 
-    $result = mysql_result($sqlCurrent, 0);
+    $result = mysql_result($sql_current, 0);
 
     do {
         if ($_POST['categories'] == $result) {
@@ -312,31 +312,31 @@ function showCurrentSearchCategory() {
 
 // Категория в результатах поиска
 
-function searchResultCategory() {
+function search_result_category() {
 	$sql = "SELECT name from categories WHERE id='".escape($_POST['categories'])."'";
 							
 	$result = query($sql);
 	
 	while($record = mysql_fetch_array($result)) {
-		$currentCategory = $record['name'];
+		$current_category = $record['name'];
 	}
 	
-	return $currentCategory;
+	return $current_category;
 }
 
-function getDiscFreeSpace($unit) {
+function get_disc_free_space($unit) {
 	$volume = round(disk_free_space('/')/1048576, 0) . ' ' . $unit;
 	return $volume;
 }
 
-$discFreeSpace = getDiscFreeSpace('Мб');
+$disc_free_space = get_disc_free_space('Мб');
 
-function getDiscTotalSpace($unit) {
+function get_disc_total_space($unit) {
 	$volume = round(disk_total_space('/')/1048576, 0) . ' ' . $unit;
 	return $volume;
 }
 
-$discTotalSpace = getDiscTotalSpace('Мб');
+$disc_total_space = get_disc_total_space('Мб');
 
 // Галерея (Удаление)
 
@@ -359,8 +359,8 @@ function gallery($check) {
 
         $qr = mysql_query($sql);
 
-        while($recordsUrl = mysql_fetch_array($qr)) {
-            $unlink = unlink('..' . $recordsUrl['url']);
+        while($records_url = mysql_fetch_array($qr)) {
+            $unlink = unlink('..' . $records_url['url']);
         }
 
         if(!mysql_query($query)) {
@@ -373,13 +373,13 @@ function gallery($check) {
 
 // Галерея (Удаление одной записи)
 
-function galleryDelete($delete, $node) {
+function gallery_delete($delete, $node) {
     if($delete) {
-        $sqlUrl = mysql_query("SELECT url FROM files where id='".escape($node)."'");
+        $sql_url = mysql_query("SELECT url FROM files where id='".escape($node)."'");
 
-        $recordUrl = mysql_fetch_array($sqlUrl);
+        $record_url = mysql_fetch_array($sql_url);
 
-        $filename =  '..' . $recordUrl['url'];
+        $filename =  '..' . $record_url['url'];
         $unlink = unlink($filename);
 
         $sql = mysql_query ("DELETE FROM files WHERE id='".escape($node)."';");
@@ -390,36 +390,37 @@ function galleryDelete($delete, $node) {
 
 // Использование изображений в записях
 
-function usedPictures($record) {
+function used_pictures($record) {
 
     $num = query("SELECT COUNT(*) FROM pages where content LIKE ('%".escape($record['url'])."%')");
 
     $count = mysql_result($num, 0);
 
-    $sqlFile = query("SELECT*FROM pages where content LIKE ('%".escape($record['url'])."%')");
+    $sql_file = query("SELECT*FROM pages where content LIKE ('%".escape($record['url'])."%')");
 
     if($count) {
-        $usedBegin = print '<div class="used"><small>Используется тут: </small></div>';
+        $used_begin = print '<div class="used"><small>Используется тут: </small></div>';
     }
-    while($recordTwo = mysql_fetch_array($sqlFile)) {
 
-        $usedNext = print '<div class="used">';
+    while($record_two = mysql_fetch_array($sql_file)) {
 
-        $string = $recordTwo['title'];
+        $used_next = print '<div class="used">';
+
+        $string = $record_two['title'];
 
         $result = implode(array_slice(explode('<br>',wordwrap($string, 41, '<br>', false)), 0, 1));
 
 
-        $usedPicture = print '<small><a href="/article.php?node=' .$recordTwo['id'].  '">'. $result . '</a></small>';
+        $used_picture = print '<small><a href="/article.php?node=' .$record_two['id'].  '">'. $result . '</a></small>';
 
         if($result!=$string) {
             $dot = print '...';
             if(($count[0]) > 1) $sep = print ' /';
         }
 
-        $usedEnd = print '</div>';
+        $used_end = print '</div>';
     }
 
-    return array($usedBegin, $usedNext, $usedPicture, $dot, $sep, $usedEnd);
+    return array($used_begin, $used_next, $used_picture, $dot, $sep, $used_end);
 }
 ?>

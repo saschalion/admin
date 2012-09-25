@@ -13,13 +13,13 @@
 								<strong>
 									Доступное пространство:	
 								</strong>
-								<?php echo $discFreeSpace; ?>
+								<?php echo $disc_free_space; ?>
 							</small>
 							<small>
 								<strong>
 									из	
 								</strong>
-								<?php echo $discTotalSpace; ?>
+								<?php echo $disc_total_space; ?>
 							</small>
 							<br><br>
                             <ul class="b-actions clearfix">
@@ -48,7 +48,7 @@
 
                                     while($record = mysql_fetch_array($q)) { ?>
 
-                                        <?php galleryDelete($delete, $node); ?>
+                                        <?php gallery_delete($delete, $node); ?>
 
                                         <li>
                                             <img src="<?php echo $record['url']; ?>" alt=""/></br>
@@ -61,7 +61,7 @@
                                             </a>
                                             <input type="checkbox" name="check[]" class="js-checkbox" value="<?php echo $record['id']; ?>"/>
 
-                                            <?php usedPictures($record) ?>
+                                            <?php used_pictures($record) ?>
                                         </li>
 
                                    <?php } ?>
