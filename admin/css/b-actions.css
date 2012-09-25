@@ -55,6 +55,14 @@
 	background-position: 0 -96px;	
 }
 
+.b-actions__icon_icon_select-all {
+    background-position: -240px 0;
+}
+
+.b-actions__icon_icon_unselect {
+    background-position: -144px -72px;
+}
+
 .b-actions__link-text {
 	text-decoration: none;
 	color: #666;

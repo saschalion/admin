@@ -213,19 +213,6 @@ function recentArticles($node) {
 	return $recentArticle;
 }
 
-// Использование изображений в записях
-
-function usedPictures($record) {
-	
-	$num = query("SELECT COUNT(*) FROM pages where content LIKE ('%".escape($record['url'])."%')");
-	
-	$count = mysql_result($num, 0);
-	
-	$sqlFile = query("SELECT*FROM pages where content LIKE ('%".escape($record['url'])."%')");
-	
-	return array($count, $sqlFile);
-}
-
 // Отображение Базы знаний
 
 function showKnowledgeArticles() {
@@ -350,4 +337,89 @@ function getDiscTotalSpace($unit) {
 }
 
 $discTotalSpace = getDiscTotalSpace('Мб');
+
+// Галерея (Удаление)
+
+function gallery($check) {
+
+    if(isset($_POST['submit']) && is_array($check)) {
+        $query = "(" ;
+        foreach($check as $val) $query.= "$val,";
+
+        $query = substr($query, 0, strlen($query) - 1 ). ")" ;
+
+        $query = "DELETE FROM files WHERE id IN ".$query;
+
+        $sql = "(" ;
+        foreach($check as $val) $sql.= "$val,";
+
+        $sql = substr($sql, 0, strlen($sql) - 1 ). ")" ;
+
+        $sql = "select url FROM files WHERE id IN ".$sql;
+
+        $qr = mysql_query($sql);
+
+        while($recordsUrl = mysql_fetch_array($qr)) {
+            $unlink = unlink('..' . $recordsUrl['url']);
+        }
+
+        if(!mysql_query($query)) {
+            echo mysql_error()."<br>";
+            $query."<br>";
+        }
+    }
+    return array($unlink, $query);
+}
+
+// Галерея (Удаление одной записи)
+
+function galleryDelete($delete, $node) {
+    if($delete) {
+        $sqlUrl = mysql_query("SELECT url FROM files where id='".escape($node)."'");
+
+        $recordUrl = mysql_fetch_array($sqlUrl);
+
+        $filename =  '..' . $recordUrl['url'];
+        $unlink = unlink($filename);
+
+        $sql = mysql_query ("DELETE FROM files WHERE id='".escape($node)."';");
+        $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=gallery.php >";
+    }
+    return array($unlink, $sql, $redirect);
+}
+
+// Использование изображений в записях
+
+function usedPictures($record) {
+
+    $num = query("SELECT COUNT(*) FROM pages where content LIKE ('%".escape($record['url'])."%')");
+
+    $count = mysql_result($num, 0);
+
+    $sqlFile = query("SELECT*FROM pages where content LIKE ('%".escape($record['url'])."%')");
+
+    if($count) {
+        $usedBegin = print '<div class="used"><small>Используется тут: </small></div>';
+    }
+    while($recordTwo = mysql_fetch_array($sqlFile)) {
+
+        $usedNext = print '<div class="used">';
+
+        $string = $recordTwo['title'];
+
+        $result = implode(array_slice(explode('<br>',wordwrap($string, 41, '<br>', false)), 0, 1));
+
+
+        $usedPicture = print '<small><a href="/article.php?node=' .$recordTwo['id'].  '">'. $result . '</a></small>';
+
+        if($result!=$string) {
+            $dot = print '...';
+            if(($count[0]) > 1) $sep = print ' /';
+        }
+
+        $usedEnd = print '</div>';
+    }
+
+    return array($usedBegin, $usedNext, $usedPicture, $dot, $sep, $usedEnd);
+}
 ?>

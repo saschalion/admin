@@ -9,23 +9,23 @@
                     <div class="text">
                         <h1>Список статей</h1>
 
-                        <?php
-
-                            function __autoload($classname) {
-                                require_once('actions/class.' . $classname. '.php');
-                            }
-
-                            $obj = new emp();
-
-                            $obj->firstname = 'Гриша';
-                            $obj->lastname = 'Иванов';
-
-                            if($obj->set_age(23)) {
-                                echo $obj->full_info();
-                            }
-                            else echo 'Тебе меньше 18ти или больше 65ти!';
-
-                        ?>
+<!--                        --><?php
+//
+//                            function __autoload($classname) {
+//                                require_once('actions/class.' . $classname. '.php');
+//                            }
+//
+//                            $obj = new emp();
+//
+//                            $obj->firstname = 'Саша';
+//                            $obj->lastname = 'Дружинин';
+//
+//                            if($obj->set_age(23)) {
+//                                echo $obj->full_info();
+//                            }
+//                            else echo 'Тебе меньше 18ти или больше 65ти!';
+//
+//                        ?>
 
 						<?php	
 							if (isset($_SESSION['user_id'])) {

@@ -80,7 +80,7 @@ if($_POST) {
 		return $xml ? (int) substr(strstr($xml, 'value="'), 7) : false;
 	}
 	
-	$tcy = getTCY('ya.ru');
+	$tcy = getTCY($_POST['search']);
 	echo $tcy;	
 
 ?>
