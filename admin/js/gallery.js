@@ -1,29 +1,39 @@
-﻿$('.js-select-all-files').click(function() {
+﻿
+box = $('.js-submit-box-gallery');
 
-    var checkbox = $('.js-checkbox');
+checkbox = $('.js-checkbox');
 
-    var icon = $(this).find($('.b-actions__icon'));
+unselect = $('.js-unselect');
 
-    var text = $(this).find($('.b-actions__link-text'));
+unselect.hide();
 
-    if(checkbox.length) {
+$('.js-select-all-files').click(function() {
 
-        text.text(text.text() == 'Снять выделение' ? 'Выделить все' : 'Снять выделение');
-
-        if(icon.hasClass('b-actions__icon_icon_select-all')) {
-            icon.removeClass('b-actions__icon_icon_select-all').addClass('b-actions__icon_icon_unselect');
-        }
-        else {
-            icon.addClass('b-actions__icon_icon_select-all').removeClass('b-actions__icon_icon_unselect');
-        }
-
-        if (!checkbox.hasClass('checked')) {;
-            checkbox.attr('checked', 'checked').addClass('checked');
-        }
-        else {
-            checkbox.removeAttr('checked').removeClass('checked');
-        }
+    if ($(this).filter(':checked:first').length == 0) {
+        box.show();
+        unselect.show();
+        checkbox.attr('checked', 'checked');
     }
+    return false;
+});
 
-   return false;
+$('.js-unselect').click(function() {
+
+    if (checkbox.filter(':checked:first').length > 0) {
+        box.hide();
+        unselect.hide();
+        checkbox.removeAttr('checked');
+    }
+    return false;
+});
+
+$('body').on('change', function() {
+    if (checkbox.filter(':checked').length > 0) {
+        box.show();
+        unselect.show();
+    }
+    else {
+        box.hide();
+        unselect.hide();
+    }
 });

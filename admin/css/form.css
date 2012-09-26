@@ -8,14 +8,6 @@ h3.form-title {
     color: green;
 }
 
-.phone-content {
-    display: inline-block;
-    height: 16px;
-    width: 125px;
-    background: url(../images/phone_content.png) no-repeat;
-    vertical-align: middle;
-}
-
 *:first-child+html .phone-content {
     display: inline;
     vertical-align: baseline;
@@ -151,4 +143,8 @@ h3.form-title {
 
 .help-text span {
     color: #ff0000;
+}
+
+.submit-box-gallery {
+    display: none;
 }

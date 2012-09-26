@@ -30,7 +30,14 @@
                                             Выделить все
                                         </span>
                                     </a>
-
+                                </li>
+                                <li class="b-actions__item">
+                                    <a class="b-actions__link js-unselect" href="#">
+                                        <b class="b-actions__icon b-actions__icon_icon_unselect"></b>
+                                        <span class="b-actions__link-text">
+                                            Снять выделение
+                                        </span>
+                                    </a>
                                 </li>
                             </ul>
 						</div>
@@ -40,6 +47,9 @@
                             <?php gallery($check); ?>
 
                             <form method="post">
+                                <p class="submit-box submit-box-gallery js-submit-box-gallery">
+                                    <input type="submit" value="Удалить отмеченные" name="submit"/>
+                                </p>
                                 <ul class="gallery-list clearfix">
 
                                     <?php
@@ -66,9 +76,6 @@
 
                                    <?php } ?>
                                 </ul>
-                                <p class="submit-box">
-                                    <input type="submit" value="Удалить отмеченные" name="submit"/>
-                                </p>
                             </form>
 						<?php
 							}
