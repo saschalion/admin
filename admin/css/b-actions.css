@@ -5,6 +5,12 @@
 	vertical-align: middle;
 }
 
+.b-actions_type_gallery {
+    width: 100%;
+    padding: 5px;
+    background: #f3f3f3;
+}
+
 .b-actions__item {
 	margin: 0 10px 0 0;
 	float: left;
@@ -74,4 +80,9 @@
 .b-actions__link:hover .b-actions__link-text {
 	color: #000;
 	border-bottom: 1px solid #666;
+}
+
+.b-button .b-actions__link-text,
+.b-button.b-actions__link:hover .b-actions__link-text {
+    border: none;
 }

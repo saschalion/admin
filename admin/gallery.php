@@ -22,24 +22,6 @@
 								<?=$disc_total_space?>
 							</small>
 							<br><br>
-                            <ul class="b-actions clearfix">
-                                <li class="b-actions__item">
-                                    <a class="b-actions__link js-select-all-files" href="#">
-                                        <b class="b-actions__icon b-actions__icon_icon_select-all"></b>
-                                        <span class="b-actions__link-text">
-                                            Выделить все
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="b-actions__item">
-                                    <a class="b-actions__link js-unselect" href="#">
-                                        <b class="b-actions__icon b-actions__icon_icon_unselect"></b>
-                                        <span class="b-actions__link-text">
-                                            Снять выделение
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
 						</div>
 						<?php	
 							if (isset($_SESSION['user_id'])) {
@@ -47,9 +29,29 @@
                             <?php gallery($check); ?>
 
                             <form method="post">
-                                <p class="submit-box submit-box-gallery js-submit-box-gallery">
-                                    <input type="submit" value="Удалить отмеченные" name="submit"/>
-                                </p>
+                                <ul class="b-actions b-actions_type_gallery clearfix">
+                                    <li class="b-actions__item">
+                                        <a class="b-actions__link b-button js-select-all-files" href="#">
+                                            <b class="b-actions__icon b-actions__icon_icon_select-all"></b>
+                                        <span class="b-actions__link-text">
+                                            Выделить все
+                                        </span>
+                                        </a>
+                                    </li>
+                                    <li class="b-actions__item">
+                                        <a class="b-actions__link b-button js-unselect" href="#">
+                                            <b class="b-actions__icon b-actions__icon_icon_unselect"></b>
+                                        <span class="b-actions__link-text">
+                                            Снять выделение
+                                        </span>
+                                        </a>
+                                    </li>
+                                    <li class="b-actions__item">
+                                        <div class="submit-box-gallery js-submit-box-gallery">
+                                            <input type="submit" value="Удалить отмеченные" name="submit" title="Удалить отмеченные" class="b-button"/>
+                                        </div>
+                                    </li>
+                                </ul>
                                 <ul class="gallery-list clearfix">
 
                                     <?php
