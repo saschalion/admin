@@ -13,6 +13,26 @@
                             echo '<p>Количество: ' . '<strong>' .  get_count_posts() . '</strong>' . '</p>';
                             include('includes/pagination-conf.php');
 						?>
+
+<!--                        --><?php
+//
+//                            function __autoload($classname) {
+//                                require_once('actions/class.' . $classname. '.php');
+//                            }
+//
+//                            $obj = new emp();
+//
+//                            $obj->firstname = 'Гриша';
+//                            $obj->lastname = 'Иванов';
+//
+//                            if($obj->set_age(23)) {
+//                                echo $obj->full_info();
+//                            }
+//                            else echo 'Тебе меньше 18ти или больше 65ти!';
+//
+//                            logger::getInstance()->addError(__MSG__, __LINE__, __FILE__);
+//
+//                        ?>
 						
 						<form action="list.php" method="post" class="b-search js-b-search">
 							<div class="b-search__fields">
