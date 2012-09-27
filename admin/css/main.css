@@ -617,27 +617,22 @@ td.price-col {
 	margin: 0;
 }
 
-.gallery-list li img {
+.gallery-img {
 	max-width: 150px;
 	max-height: 100px;
 	border: 1px solid #ccc;	
 }
 
 .file-url {
-	margin: 5px 0;
 	font-size: 12px;
 	color: #666;
 }
 
-.used {
-	margin: 5px 0 0;
-}
-
-.gallery-list li a {
+.gallery a {
 	color: #333;
 }
 
-.gallery-list li a:hover {
+.gallery a:hover {
 	color: #000;
 }
 

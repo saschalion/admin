@@ -78,7 +78,7 @@ function save_article($save, $title_edit, $text_edit, $meta_title, $meta_keyword
         $sid = escape($_SESSION['id']);
 
         $array = array(
-            'title' => $title_edit,
+            'title' => escape($title_edit),
             'content' => $text_edit,
             'meta_title' => $meta_title,
             'meta_keywords' => $meta_keywords,
@@ -90,7 +90,7 @@ function save_article($save, $title_edit, $text_edit, $meta_title, $meta_keyword
         if (count($array) > 0) {
             foreach ($array as $key => $value) {
 
-                $value = escape(trim($value));
+                $value = trim($value);
                 $value = "'$value'";
                 $updates[] = "$key = $value";
             }
@@ -410,10 +410,9 @@ function used_pictures($record) {
 
         $result = implode(array_slice(explode('<br>',wordwrap($string, 41, '<br>', false)), 0, 1));
 
-
         $used_picture = print '<small><a href="/article.php?node=' .$record_two['id'].  '">'. $result . '</a></small>';
 
-        if($result!=$string) {
+        if($result != $string) {
             $dot = print '...';
             if(($count[0]) > 1) $sep = print ' /';
         }

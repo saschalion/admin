@@ -26,6 +26,12 @@
 	background: #F8F8F8;
 }
 
+.b-table__body .b-table__row_state_chosen .b-table__column,
+.b-table__body .b-table__row_state_chosen:nth-child(even) .b-table__column {
+    background: #F3F3F7;
+    border-color: #CACACA;
+}
+
 .b-table__date {
 	color: #666;
 	font-size: 10px;

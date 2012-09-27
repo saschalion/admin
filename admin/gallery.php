@@ -48,36 +48,67 @@
                                     </li>
                                     <li class="b-actions__item">
                                         <div class="submit-box-gallery js-submit-box-gallery">
-                                            <input type="submit" value="Удалить отмеченные" name="submit" title="Удалить отмеченные" class="b-button"/>
+                                            <input type="submit" value="Удалить отмеченные" name="submit" title="Удалить отмеченные" class="b-button js-confirm"/>
                                         </div>
                                     </li>
                                 </ul>
-                                <ul class="gallery-list clearfix">
+                                <table class="b-table gallery">
+                                    <thead class="b-table__head">
+                                        <tr class="b-table__row">
+                                            <th class="b-table__column">
+                                                Картинка
+                                            </th>
+                                            <th class="b-table__column">
+                                                Размер
+                                            </th>
+                                            <th class="b-table__column">
+                                                Ссылка
+                                            </th>
+                                            <th class="b-table__column">
+                                                Использование
+                                            </th>
+                                            <th class="b-table__column">
+                                                Действия
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="b-table__body">
+                                        <?php
+                                        $q = query("SELECT*FROM files where user_id='".escape($_SESSION['user_id'])."' ORDER BY id DESC");
+                                        while($record = mysql_fetch_array($q)) { ?>
 
-                                    <?php
+                                            <?php gallery_delete($delete, $node); ?>
 
-                                    $q = query("SELECT*FROM files where user_id='".escape($_SESSION['user_id'])."' ORDER BY id DESC");
-
-                                    while($record = mysql_fetch_array($q)) { ?>
-
-                                        <?php gallery_delete($delete, $node); ?>
-
-                                        <li>
-                                            <img src="<?=$record['url']?>" alt=""/></br>
-                                            <div class="file-url">
-                                                <strong>Ссылка</strong>: <?=$record['url']?>
-                                            </div>
-                                            <a class="b-actions__link js-confirm" href="gallery.php?node=<?=$record['id']?>&delete=true">
-                                                <b class="b-actions__icon b-actions__icon_icon_delete"></b>
-                                                <span class="b-actions__link-text">Удалить</a>
-                                            </a>
-                                            <input type="checkbox" name="check[]" class="js-checkbox" value="<?=$record['id']?>"/>
-
-                                            <?php used_pictures($record) ?>
-                                        </li>
-
-                                   <?php } ?>
-                                </ul>
+                                            <tr class="b-table__row">
+                                                <td class="b-table__column">
+                                                    <img class="gallery-img" src="<?=$record['url']?>" alt=""/>
+                                                </td>
+                                                <td class="b-table__column">
+                                                    <div class="file-url">
+                                                        <?php $filesize = round((filesize('..' . $record['url'])/1024), 2) . ' Кб';
+                                                            echo $filesize;
+                                                        ?>
+                                                    </div>
+                                                </td>
+                                                <td class="b-table__column">
+                                                    <div class="file-url">
+                                                        <?=$record['url']?>
+                                                    </div>
+                                                </td>
+                                                <td class="b-table__column">
+                                                    <?php used_pictures($record) ?>
+                                                </td>
+                                                <td class="b-table__column">
+                                                    <input type="checkbox" name="check[]" class="js-checkbox" value="<?=$record['id']?>"/><br>
+<!--                                                    <a class="b-actions__link js-confirm" href="gallery.php?node=--><?//=$record['id']?><!--&delete=true">-->
+<!--                                                        <b class="b-actions__icon b-actions__icon_icon_delete"></b>-->
+<!--                                                        <span class="b-actions__link-text">Удалить</a>-->
+<!--                                                    </a>-->
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </form>
 						<?php
 							}

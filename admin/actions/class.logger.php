@@ -1,5 +1,5 @@
 <?php
-define("LOGFILE", realpath(dirname(__FILE__) . "logs/") . "logs.txt");
+define("LOGFILE", realpath(dirname(__FILE__) . "/logs/") . "logs.txt");
 class logger
 {
     private $loggerStream;
@@ -19,7 +19,7 @@ class logger
 
     public function addError($msg, $line, $file)
     {
-        fwrite($this->loggerStream, "nn{$file} ({$line})n{$msg}");
+        fwrite($this->loggerStream, "\n{$file} ({$line})\n{$msg}");
     }
 
     public function __destruct()
