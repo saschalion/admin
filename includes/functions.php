@@ -122,6 +122,7 @@ function show_article($node) {
 		$meta_title = $record['meta_title'];
 		$meta_keywords = $record['meta_keywords'];
 		$meta_desc = $record['meta_desc'];
+        $id = $record['id'];
 	}
 	
 	return array($title, $content, $meta_title, $meta_keywords, $meta_desc, $link_text);
@@ -312,8 +313,8 @@ function show_current_search_category() {
 
 // Категория в результатах поиска
 
-function search_result_category() {
-	$sql = "SELECT name from categories WHERE id='".escape($_POST['categories'])."'";
+function search_result_category($categories) {
+	$sql = "SELECT name from categories WHERE id='".escape($categories)."'";
 							
 	$result = query($sql);
 	
@@ -447,7 +448,7 @@ function upload() {
 
                 move_uploaded_file($_FILES["file"]["tmp_name"], ".." . $file_folder . $new_file_name);
 
-                query("INSERT INTO files (url, user_id) values ('" . escape($file_folder.$new_file_name) . "', '" . escape($_SESSION['user_id']) . "')");
+                query("INSERT INTO files (url, user_id, created_at) values ('" . escape($file_folder.$new_file_name) . "', '" . escape($_SESSION['user_id']) . "', '". date('Y-m-d G:i') ."')");
 
                 $file_message = "<span style='color: green;'>Файл успешно загружен!</span><br/> Скопируйте ссылку файла в текстовый редактор: " . "<strong>/uploads/" . $new_file_name . "</strong>";
 
@@ -472,3 +473,28 @@ $upload = upload();
 $file_message = $upload[0];
 
 $preview = $upload[1];
+
+function search($title, $categories, $posts, $start, $num) {
+
+    $query = query("SELECT COUNT(*) FROM pages WHERE user_id='".$_SESSION['user_id']."'");
+
+    $q = "SELECT pages.id, pages.title, categories.name FROM pages, categories WHERE pages.title LIKE '%$title%' AND pages.category_id=categories.id AND user_id='".escape($_SESSION['user_id'])."'";
+
+    $t = "UNION SELECT pages.id, pages.title, categories.name FROM pages, categories WHERE pages.id LIKE '%$title%' AND pages.category_id=categories.id AND user_id='".escape($_SESSION['user_id'])."'";
+
+    $s = "SELECT pages.id, pages.title, categories.name FROM pages, categories WHERE pages.category_id=categories.id AND user_id='".escape($_SESSION['user_id'])."'";
+
+    if(!empty($title) && empty($categories)) { $q = $q . $t; }
+
+    if((!empty($title)) && (!empty($categories))) {$q = $q . "AND pages.category_id LIKE '%$categories%'" . $t . "AND pages.category_id LIKE '%$categories%'";}
+
+    if(empty($categories) && empty($title)) { $q = $s . "order by pages.id desc LIMIT $start, $num";}
+
+    if(!empty($title) || !empty($categories)) { $num = $posts;}
+
+    //if (empty($title)) {$q = $s;}
+
+    if((empty($title)) && (!empty($categories))) { $q = "SELECT pages.*, categories.name FROM pages, categories WHERE pages.category_id LIKE '%$categories%' AND pages.category_id=categories.id AND user_id='".$_SESSION['user_id']."' order by pages.id desc";}
+
+    return array($q, $num, $query);
+}

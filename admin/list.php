@@ -52,8 +52,8 @@
 							echo $article[1];
 						?>	
 						<div class="js-results">
-							<?php $current_category = search_result_category(); ?>
-							<?php if($_POST['title'] || $_POST['categories']) echo '<p class="js-result">Результаты поиска: <strong>' . $_POST['title'] . ' ' . $current_category . '</strong></p>'; ?>
+							<?php $current_category = search_result_category($categories); ?>
+							<?php if($_REQUEST['title'] || $_REQUEST['categories']) echo '<p class="js-result">Результаты поиска: <strong>' . $_REQUEST['title'] . ' ' . $current_category . '</strong></p>'; ?>
 						</div>
 						<div class="b-table-box js-b-table-box">	
 							<table class='b-table js-b-table'>							

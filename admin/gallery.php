@@ -68,6 +68,9 @@
                                                 Использование
                                             </th>
                                             <th class="b-table__column">
+                                                Добавлена
+                                            </th>
+                                            <th class="b-table__column">
                                                 Действия
                                             </th>
                                         </tr>
@@ -97,6 +100,13 @@
                                                 </td>
                                                 <td class="b-table__column">
                                                     <?php used_pictures($record) ?>
+                                                </td>
+                                                <td class="b-table__column">
+                                                    <div class="file-url">
+                                                        <small>
+                                                            <?=$record['created_at']?>
+                                                        </small>
+                                                    </div>
                                                 </td>
                                                 <td class="b-table__column">
                                                     <input type="checkbox" name="check[]" class="js-checkbox" value="<?=$record['id']?>"/><br>
