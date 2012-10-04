@@ -17,8 +17,8 @@
 <meta http-equiv="content-language" content="ru">
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="../css/style.css" type="text/css">
-<link rel="stylesheet" href="../css/reset.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/reset.css" type="text/css">
 </head>
 <body>	
     <div class="wrap">

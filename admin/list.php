@@ -12,6 +12,7 @@
 							if (isset($_SESSION['user_id'])) {
                             echo '<p>Количество: ' . '<strong>' .  get_count_posts() . '</strong>' . '</p>';
                             include('includes/pagination-conf.php');
+
 						?>
 
 <!--                        --><?php

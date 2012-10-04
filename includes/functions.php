@@ -408,7 +408,7 @@ function used_pictures($record) {
 
         $string = $record_two['title'];
 
-        $result = implode(array_slice(explode('<br>',wordwrap($string, 41, '<br>', false)), 0, 1));
+        $result = implode(array_slice(explode('<br>',wordwrap($string, 61, '<br>', false)), 0, 1));
 
         $used_picture = print '<small><a href="/article.php?node=' .$record_two['id'].  '">'. $result . '</a></small>';
 
@@ -422,4 +422,53 @@ function used_pictures($record) {
 
     return array($used_begin, $used_next, $used_picture, $dot, $sep, $used_end);
 }
-?>
+
+function upload() {
+    if(is_uploaded_file($_FILES["file"]["tmp_name"])) {
+
+        $file_folder = '/uploads/';
+
+        $file_name = $_FILES["file"]["name"];
+
+        $file_size = $_FILES["file"]["size"];
+
+        if(get_mime_type($file_name)) {
+            if($file_size > 1024*1*1024) {
+                $file_message = "<span style='color: red;'>Размер файла превышает один мегабайт</span>";
+            } else {
+
+                $file_name = explode('.', $file_name);
+
+                $name = $file_name[0];
+
+                $ext = end($file_name);
+
+                $new_file_name = str_replace(' ', '_', $name) . '-' . md5(time()) . '.' . $ext;
+
+                move_uploaded_file($_FILES["file"]["tmp_name"], ".." . $file_folder . $new_file_name);
+
+                query("INSERT INTO files (url, user_id) values ('" . escape($file_folder.$new_file_name) . "', '" . escape($_SESSION['user_id']) . "')");
+
+                $file_message = "<span style='color: green;'>Файл успешно загружен!</span><br/> Скопируйте ссылку файла в текстовый редактор: " . "<strong>/uploads/" . $new_file_name . "</strong>";
+
+                $preview = "
+				<h3>Предварительный просмотр изображения:</h3> <img class='preview-img' src='/uploads/" .
+
+                    $new_file_name . "' alt=''/><p><small><strong>Размер:</strong> " . round($file_size/1024, 3) .
+                    " Кб</small></p>
+				<h3>Загрузить еще файл</h3>";
+            }
+        }
+        else {
+            $file_message = "<span style='color: red;'>Доступные расширения: jpeg, jpg, png, gif.</span>";
+        }
+    }
+
+    return array($file_message, $preview);
+}
+
+$upload = upload();
+
+$file_message = $upload[0];
+
+$preview = $upload[1];

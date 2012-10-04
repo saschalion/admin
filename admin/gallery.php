@@ -28,7 +28,7 @@
 						?>
                             <?php gallery($check); ?>
 
-                            <form method="post">
+                            <form method="post" class="js-gallery">
                                 <ul class="b-actions b-actions_type_gallery clearfix">
                                     <li class="b-actions__item">
                                         <a class="b-actions__link b-button js-select-all-files" href="#">
@@ -126,5 +126,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="js/confirm.js"></script>
     <script src="js/gallery.js"></script>
+    <script src="js/gallery-actions.js"></script>
 </body>
 </html>
