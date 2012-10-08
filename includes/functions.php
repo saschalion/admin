@@ -361,7 +361,9 @@ function gallery($check) {
         $qr = mysql_query($sql);
 
         while($records_url = mysql_fetch_array($qr)) {
-            $unlink = unlink('..' . $records_url['url']);
+            if(file_exists('..' . $records_url['url'])) {
+                $unlink = unlink('..' . $records_url['url']);
+            }
         }
 
         if(!mysql_query($query)) {
@@ -388,6 +390,20 @@ function gallery_delete($delete, $node) {
     }
     return array($unlink, $sql, $redirect);
 }
+
+function get_file_size($file) {
+    if(file_exists($file)) {
+        $filesize = print round((filesize($file)/1024), 2) . ' Кб';
+    }
+    return $filesize;
+}
+
+function get_files() {
+    $q = query("SELECT*FROM files where user_id='".escape($_SESSION['user_id'])."' ORDER BY id DESC");
+    return $q;
+}
+
+$all_files_query = get_files();
 
 // Использование изображений в записях
 
@@ -491,8 +507,6 @@ function search($title, $categories, $posts, $start, $num) {
     if(empty($categories) && empty($title)) { $q = $s . "order by pages.id desc LIMIT $start, $num";}
 
     if(!empty($title) || !empty($categories)) { $num = $posts;}
-
-    //if (empty($title)) {$q = $s;}
 
     if((empty($title)) && (!empty($categories))) { $q = "SELECT pages.*, categories.name FROM pages, categories WHERE pages.category_id LIKE '%$categories%' AND pages.category_id=categories.id AND user_id='".$_SESSION['user_id']."' order by pages.id desc";}
 

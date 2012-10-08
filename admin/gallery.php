@@ -77,8 +77,8 @@
                                     </thead>
                                     <tbody class="b-table__body">
                                         <?php
-                                        $q = query("SELECT*FROM files where user_id='".escape($_SESSION['user_id'])."' ORDER BY id DESC");
-                                        while($record = mysql_fetch_array($q)) { ?>
+
+                                        while($record = mysql_fetch_array($all_files_query)) { ?>
 
                                             <?php gallery_delete($delete, $node); ?>
 
@@ -88,9 +88,7 @@
                                                 </td>
                                                 <td class="b-table__column">
                                                     <div class="file-url">
-                                                        <?php $filesize = round((filesize('..' . $record['url'])/1024), 2) . ' Кб';
-                                                            echo $filesize;
-                                                        ?>
+                                                        <?php get_file_size('..' . $record['url']); ?>
                                                     </div>
                                                 </td>
                                                 <td class="b-table__column">
@@ -109,11 +107,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="b-table__column">
-                                                    <input type="checkbox" name="check[]" class="js-checkbox" value="<?=$record['id']?>"/><br>
-<!--                                                    <a class="b-actions__link js-confirm" href="gallery.php?node=--><?//=$record['id']?><!--&delete=true">-->
-<!--                                                        <b class="b-actions__icon b-actions__icon_icon_delete"></b>-->
-<!--                                                        <span class="b-actions__link-text">Удалить</a>-->
-<!--                                                    </a>-->
+                                                    <input type="checkbox" name="check[]" class="js-checkbox" value="<?=$record['id']?>"/>
                                                 </td>
                                             </tr>
                                         <?php } ?>
