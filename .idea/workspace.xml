@@ -73,7 +73,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/pages/sales.htm" />
         <option value="$PROJECT_DIR$/pages/q&amp;a.htm" />
         <option value="$PROJECT_DIR$/css/lightbox.css" />
         <option value="$PROJECT_DIR$/js/script.js" />
@@ -89,6 +88,7 @@
         <option value="$PROJECT_DIR$/article.php" />
         <option value="$PROJECT_DIR$/admin/gallery.php" />
         <option value="$PROJECT_DIR$/includes/functions.php" />
+        <option value="$PROJECT_DIR$/admin/edit.php" />
       </list>
     </option>
   </component>
@@ -141,20 +141,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -424,22 +410,39 @@
         <state line="24" column="28" selection-start="970" selection-end="970" vertical-scroll-proportion="0.4347826" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/functions.php">
+    <entry file="file://$PROJECT_DIR$/admin/gallery.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="509" column="0" selection-start="14919" selection-end="14919" vertical-scroll-proportion="4.6809816">
+        <state line="73" column="56" selection-start="3685" selection-end="3685" vertical-scroll-proportion="0.5217391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/new.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="32" selection-start="454" selection-end="454" vertical-scroll-proportion="0.33128834">
           <folding>
-            <marker date="1349686341842" expanded="false" signature="1546:1559" placeholder="..." />
-            <marker date="1349686341842" expanded="true" signature="12400:12411" placeholder="..." />
-            <marker date="1349686341842" expanded="true" signature="13386:13486" placeholder="..." />
-            <marker date="1349686341842" expanded="true" signature="13393:13482" placeholder="..." />
-            <marker date="1349686341842" expanded="true" signature="13603:13614" placeholder="..." />
+            <marker date="1348577242000" expanded="false" signature="724:738" placeholder="..." />
+            <marker date="1348577242000" expanded="false" signature="1090:1102" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/gallery.php">
+    <entry file="file://$PROJECT_DIR$/includes/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="56" selection-start="3685" selection-end="3685" vertical-scroll-proportion="0.5217391">
+        <state line="72" column="0" selection-start="1650" selection-end="1650" vertical-scroll-proportion="-5.367347">
+          <folding>
+            <marker date="1349694010646" expanded="false" signature="1544:1557" placeholder="..." />
+            <marker date="1349694010646" expanded="true" signature="12621:12632" placeholder="..." />
+            <marker date="1349694010646" expanded="true" signature="13607:13707" placeholder="..." />
+            <marker date="1349694010646" expanded="true" signature="13614:13703" placeholder="..." />
+            <marker date="1349694010646" expanded="true" signature="13824:13835" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="26" selection-start="619" selection-end="619" vertical-scroll-proportion="0.36809817">
           <folding />
         </state>
       </provider>

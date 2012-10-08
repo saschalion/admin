@@ -16,8 +16,7 @@ function query($value) {
 
 function list_sql() {
 	$sql = query("SELECT*FROM pages");
-	  while($record = mysql_fetch_array($sql))
-		{
+	  while($record = mysql_fetch_array($sql)) {
 			$entity =  print '<li><a href="article.php?node='.$record['id'].'">'.$record['title'].'</a></li>';							  
 		}
 		
@@ -71,37 +70,40 @@ function delete_article($delete, $node) {
 
 // Сохранение записи
 
-function save_article($save, $title_edit, $text_edit, $meta_title, $meta_keywords, $meta_desc, $category_edit, $link_text_edit) {
+function save_article($save, $title_edit, $text_edit, $meta_title_edit, $meta_keywords_edit, $meta_desc_edit, $category_edit, $link_text_edit) {
 
     if($save) {
-
-        $sid = escape($_SESSION['id']);
-
-        $array = array(
-            'title' => escape($title_edit),
-            'content' => $text_edit,
-            'meta_title' => $meta_title,
-            'meta_keywords' => $meta_keywords,
-            'meta_desc' => $meta_desc,
-            'link_text' => $link_text_edit,
-            'pages.category_id' => $category_edit
-        );
-
-        if (count($array) > 0) {
-            foreach ($array as $key => $value) {
-
-                $value = trim($value);
-                $value = "'$value'";
-                $updates[] = "$key = $value";
-            }
+        if(empty($title_edit) || empty($text_edit)) {
+            print $redirect = "<META HTTP-EQUIV=Refresh content=0;URL=?node=".$_SESSION['id'].">";
         }
+        else {
+            $sid = escape($_SESSION['id']);
 
-        $implode_array = implode(', ', $updates);
+            $array = array(
+                'title' => escape($title_edit),
+                'content' => $text_edit,
+                'meta_title' => $meta_title_edit,
+                'meta_keywords' => $meta_keywords_edit,
+                'meta_desc' => $meta_desc_edit,
+                'link_text' => $link_text_edit,
+                'pages.category_id' => $category_edit
+            );
 
-        $sql = query("UPDATE pages SET $implode_array where id=$sid");
+            if (count($array) > 0) {
+                foreach ($array as $key => $value) {
 
-        $redirect = "<META HTTP-EQUIV=Refresh content=0;URL=list.php >";
+                    $value = trim($value);
+                    $value = "'$value'";
+                    $updates[] = "$key = $value";
+                }
+            }
 
+            $implode_array = implode(', ', $updates);
+
+            $sql = query("UPDATE pages SET $implode_array where id=$sid");
+
+            print $redirect = "<META HTTP-EQUIV=Refresh content=0;URL=list.php >";
+        }
     }
 
     return array($sql, $redirect);
@@ -122,7 +124,6 @@ function show_article($node) {
 		$meta_title = $record['meta_title'];
 		$meta_keywords = $record['meta_keywords'];
 		$meta_desc = $record['meta_desc'];
-        $id = $record['id'];
 	}
 	
 	return array($title, $content, $meta_title, $meta_keywords, $meta_desc, $link_text);
@@ -131,7 +132,7 @@ function show_article($node) {
 // Mime-types
 
 function get_mime_type($file) {	
-	// our list of mime types
+
 	$mime_types = array(	
 		"gif"  => "image/gif",
 		"png"  => "image/png",
@@ -358,7 +359,7 @@ function gallery($check) {
 
         $sql = "select url FROM files WHERE id IN ".$sql;
 
-        $qr = mysql_query($sql);
+        $qr = query($sql);
 
         while($records_url = mysql_fetch_array($qr)) {
             if(file_exists('..' . $records_url['url'])) {
@@ -366,7 +367,7 @@ function gallery($check) {
             }
         }
 
-        if(!mysql_query($query)) {
+        if(!query($query)) {
             echo mysql_error()."<br>";
             $query."<br>";
         }
@@ -378,14 +379,14 @@ function gallery($check) {
 
 function gallery_delete($delete, $node) {
     if($delete) {
-        $sql_url = mysql_query("SELECT url FROM files where id='".escape($node)."'");
+        $sql_url = query("SELECT url FROM files where id='".escape($node)."'");
 
         $record_url = mysql_fetch_array($sql_url);
 
         $filename =  '..' . $record_url['url'];
         $unlink = unlink($filename);
 
-        $sql = mysql_query ("DELETE FROM files WHERE id='".escape($node)."';");
+        $sql = query ("DELETE FROM files WHERE id='".escape($node)."';");
         $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=gallery.php >";
     }
     return array($unlink, $sql, $redirect);

@@ -20,11 +20,9 @@
 							if (isset($_SESSION['user_id'])) {
 						?>
 						<?php include('includes/upload.php'); ?>
-					
-                        <?php
-							$save = save_article($save, $title_edit, $text_edit, $meta_title, $meta_keywords, $meta_desc, $category_edit, $link_text_edit);
-							echo $save[1];
-						?>
+
+                        <?php save_article($save, $title_edit, $text_edit, $meta_title_edit, $meta_keywords_edit, $meta_desc_edit, $category_edit, $link_text_edit);?>
+
 						<h1>Редактировать "<?=$title?>"</h1>
 						<form action="edit.php" method="post" class="order-form">
 						    <div class="label-box">
@@ -57,19 +55,19 @@
 								<label for="meta-title">
 									Title
 								</label>
-								<input name="meta_title" id="meta-title" type="text" value="<?=$meta_title?>">
+								<input name="meta_title_edit" id="meta-title" type="text" value="<?=$meta_title?>">
 							</div>
 							<div class="label-box">
 								<label for="meta-keywords">
 									Meta Keywords
 								</label>
-								<input name="meta_keywords" id="meta-keywords" type="text" value="<?=$meta_keywords?>">
+								<input name="meta_keywords_edit" id="meta-keywords" type="text" value="<?=$meta_keywords?>">
 							</div>
 							<div class="label-box">
 								<label for="meta-desc">
 									Meta Description
 								</label>
-								<input name="meta_desc" id="meta-desc" type="text" value="<?=$meta_desc?>">
+								<input name="meta_desc_edit" id="meta-desc" type="text" value="<?=$meta_desc?>">
 							</div>
 							<p class="submit-box">
 								<input name="save" type="submit" value="Сохранить">
