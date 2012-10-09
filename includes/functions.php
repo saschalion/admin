@@ -367,12 +367,14 @@ function gallery($check) {
             }
         }
 
+        $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=gallery.php >";
+
         if(!query($query)) {
             echo mysql_error()."<br>";
             $query."<br>";
         }
     }
-    return array($unlink, $query);
+    return array($unlink, $query, $redirect);
 }
 
 // Галерея (Удаление одной записи)
@@ -384,9 +386,12 @@ function gallery_delete($delete, $node) {
         $record_url = mysql_fetch_array($sql_url);
 
         $filename =  '..' . $record_url['url'];
-        $unlink = unlink($filename);
 
-        $sql = query ("DELETE FROM files WHERE id='".escape($node)."';");
+        if(file_exists($filename)) {
+            $unlink = unlink($filename);
+        }
+
+        $sql = query("DELETE FROM files WHERE id='".escape($node)."';");
         $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=gallery.php >";
     }
     return array($unlink, $sql, $redirect);
@@ -512,4 +517,9 @@ function search($title, $categories, $posts, $start, $num) {
     if((empty($title)) && (!empty($categories))) { $q = "SELECT pages.*, categories.name FROM pages, categories WHERE pages.category_id LIKE '%$categories%' AND pages.category_id=categories.id AND user_id='".$_SESSION['user_id']."' order by pages.id desc";}
 
     return array($q, $num, $query);
+}
+
+function admin_url($link) {
+    $url = '/admin/' . $link . '.php';
+    return $url;
 }

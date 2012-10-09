@@ -58,6 +58,10 @@
     background-position: -312px -24px;
 }
 
+.b-menu__icon_icon_picture {
+    background-position: -456px -48px;
+}
+
 .b-menu__link {    
 	text-decoration: none;
 }

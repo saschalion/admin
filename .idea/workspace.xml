@@ -73,10 +73,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/pages/q&amp;a.htm" />
-        <option value="$PROJECT_DIR$/css/lightbox.css" />
-        <option value="$PROJECT_DIR$/js/script.js" />
-        <option value="$PROJECT_DIR$/js/lightbox.js" />
         <option value="$PROJECT_DIR$/pages/gallery.htm" />
         <option value="$PROJECT_DIR$/pages/partners.htm" />
         <option value="$PROJECT_DIR$/css/main.css" />
@@ -86,9 +82,13 @@
         <option value="$PROJECT_DIR$/admin/list.php" />
         <option value="$PROJECT_DIR$/includes/right-sidebar.php" />
         <option value="$PROJECT_DIR$/article.php" />
+        <option value="$PROJECT_DIR$/admin/edit.php" />
+        <option value="$PROJECT_DIR$/admin/css/b-actions.css" />
+        <option value="$PROJECT_DIR$/admin/css/b-menu.css" />
+        <option value="$PROJECT_DIR$/admin/upload.php" />
         <option value="$PROJECT_DIR$/admin/gallery.php" />
         <option value="$PROJECT_DIR$/includes/functions.php" />
-        <option value="$PROJECT_DIR$/admin/edit.php" />
+        <option value="$PROJECT_DIR$/admin/includes/menu.php" />
       </list>
     </option>
   </component>
@@ -126,6 +126,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files" />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -154,6 +157,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="includes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -186,14 +203,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files" />
       </pane>
       <pane id="PackagesPane">
         <subPane />
@@ -205,21 +255,21 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/admin" />
       <recent name="$PROJECT_DIR$/admin/includes" />
       <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/images/lightbox" />
       <recent name="$PROJECT_DIR$/admin/js" />
-      <recent name="$PROJECT_DIR$/php" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -281,7 +331,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34561965" sideWeight="0.6708428" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34935898" sideWeight="0.6708428" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -360,19 +410,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Загрузки/lightbox/css/lightbox.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="21" selection-start="0" selection-end="3767" vertical-scroll-proportion="0.31690142" />
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Загрузки/lightbox/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="236" column="18" selection-start="10563" selection-end="10563" vertical-scroll-proportion="0.56329113" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/includes/menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="20" selection-start="2243" selection-end="2243" vertical-scroll-proportion="1.1413044" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/logs.txt">
@@ -410,13 +450,6 @@
         <state line="24" column="28" selection-start="970" selection-end="970" vertical-scroll-proportion="0.4347826" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/gallery.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="56" selection-start="3685" selection-end="3685" vertical-scroll-proportion="0.5217391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/new.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="32" selection-start="454" selection-end="454" vertical-scroll-proportion="0.33128834">
@@ -427,22 +460,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin/edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="26" selection-start="619" selection-end="619" vertical-scroll-proportion="0.36809817" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/css/b-actions.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="15" selection-start="192" selection-end="192" vertical-scroll-proportion="0.19366197">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/css/b-menu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="0" selection-start="991" selection-end="991" vertical-scroll-proportion="0.7922535">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/gallery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="44" selection-start="7372" selection-end="7372" vertical-scroll-proportion="-23.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="32" selection-start="513" selection-end="513" vertical-scroll-proportion="-12.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/includes/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="0" selection-start="1650" selection-end="1650" vertical-scroll-proportion="-5.367347">
+        <state line="521" column="25" selection-start="15593" selection-end="15609" vertical-scroll-proportion="0.88957053">
           <folding>
-            <marker date="1349694010646" expanded="false" signature="1544:1557" placeholder="..." />
-            <marker date="1349694010646" expanded="true" signature="12621:12632" placeholder="..." />
-            <marker date="1349694010646" expanded="true" signature="13607:13707" placeholder="..." />
-            <marker date="1349694010646" expanded="true" signature="13614:13703" placeholder="..." />
-            <marker date="1349694010646" expanded="true" signature="13824:13835" placeholder="..." />
+            <marker date="1349755963214" expanded="false" signature="1544:1557" placeholder="..." />
+            <marker date="1349755963214" expanded="false" signature="12766:12777" placeholder="..." />
+            <marker date="1349755963214" expanded="true" signature="13752:13852" placeholder="..." />
+            <marker date="1349755963214" expanded="true" signature="13759:13848" placeholder="..." />
+            <marker date="1349755963214" expanded="false" signature="13969:13980" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/edit.php">
+    <entry file="file://$PROJECT_DIR$/admin/includes/menu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="26" selection-start="619" selection-end="619" vertical-scroll-proportion="0.36809817">
+        <state line="32" column="33" selection-start="959" selection-end="959" vertical-scroll-proportion="0.5797101">
           <folding />
         </state>
       </provider>

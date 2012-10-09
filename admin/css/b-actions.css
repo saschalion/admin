@@ -9,6 +9,7 @@
     width: 920px;
     padding: 5px;
     background: #f3f3f3;
+    z-index: 10;
 }
 
 .b-actions_state_fixed {
