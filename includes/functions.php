@@ -496,7 +496,7 @@ $file_message = $upload[0];
 
 $preview = $upload[1];
 
-function search($title, $categories, $posts, $start, $num) {
+function search($title, $categories, $start, $num) {
 
     $query = query("SELECT COUNT(*) FROM pages WHERE user_id='".$_SESSION['user_id']."'");
 
@@ -506,13 +506,13 @@ function search($title, $categories, $posts, $start, $num) {
 
     $s = "SELECT pages.id, pages.title, categories.name FROM pages, categories WHERE pages.category_id=categories.id AND user_id='".escape($_SESSION['user_id'])."'";
 
+
+
     if(!empty($title) && empty($categories)) { $q = $q . $t; }
 
     if((!empty($title)) && (!empty($categories))) {$q = $q . "AND pages.category_id LIKE '%$categories%'" . $t . "AND pages.category_id LIKE '%$categories%'";}
 
     if(empty($categories) && empty($title)) { $q = $s . "order by pages.id desc LIMIT $start, $num";}
-
-    if(!empty($title) || !empty($categories)) { $num = $posts;}
 
     if((empty($title)) && (!empty($categories))) { $q = "SELECT pages.*, categories.name FROM pages, categories WHERE pages.category_id LIKE '%$categories%' AND pages.category_id=categories.id AND user_id='".$_SESSION['user_id']."' order by pages.id desc";}
 

@@ -10,7 +10,7 @@
                         <h1>Список статей</h1>
 						<?php	
 							if (isset($_SESSION['user_id'])) {
-                            echo '<p>Количество: ' . '<strong>' .  get_count_posts() . '</strong>' . '</p>';
+                            echo '<p>Количество: ' . '<strong>' .  get_count_posts() . $array[1] . '</strong>' . '</p>';
                             include('includes/pagination-conf.php');
 
 						?>
@@ -145,10 +145,7 @@
 							</div>
 						</div>
 						<?php include('includes/pagination.php'); ?>
-						<?php
-							}
-							else
-							{
+						<?php } else {
 								echo('<p>Доступ закрыт, Вам необходимо <a href="login.php">авторизоваться</a>.</p>');
 							}
 						?>

@@ -1,14 +1,18 @@
 <?php
 
-    $array = search($title, $categories, $posts, $start, $num);
+    $array = search($title, $categories, $start, $num);
 
     $query = $array[2];
 
     $num = 10;
 
+    $query = query("SELECT COUNT(*) FROM pages WHERE user_id='".$_SESSION['user_id']."'");
+
     $page = $_GET['page'];
 
     $posts = mysql_result($query, 0);
+
+    if(!empty($title) || !empty($categories)) { $num = $posts;}
 
     $total = intval(($posts - 1) / $num) + 1;
 
@@ -19,7 +23,7 @@
 
     $start = $page * $num - $num;
 
-    $array = search($title, $categories, $posts, $start, $num);
+    $array = search($title, $categories, $start, $num);
 
     $q = $array[0];
 
