@@ -47,14 +47,43 @@
                                 var options = {
                                     'title':'Пульс',
                                     'width': 450,
-                                    'height': 240
+                                    'height': 240,
+                                    vAxis: {
+                                        maxValue: 90,
+                                        minValue: 40
+                                    }
+
                                 };
 
                                 chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+
+                                
                                 chart.draw(data, options);
                             }
+
+                            google.load('visualization', '1', {packages: ['gauge']});
+                            google.setOnLoadCallback(drawVisualization);
+
+                            function drawVisualization() {
+                                // Create and populate the data table.
+                                var data = google.visualization.arrayToDataTable([
+                                    ['Label', 'Value'],
+                                    ['Пульс', 80],
+                                    ['Давление', 55],
+                                    ['Холестерин', 68]
+                                ]);
+
+                                // Create and draw the visualization.
+                                new google.visualization.Gauge(document.getElementById('visualization')).
+                                        draw(data);
+                            }
+
                         </script>
                         <div id="chart_div2"></div>
+                        <br><br>
+                        <div id="visualization"></div>
+
+
                         <?php
                     }
                     else
