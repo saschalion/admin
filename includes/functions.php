@@ -1,5 +1,11 @@
 ﻿<?php
 
+//function __autoload($classname) {
+//    require_once($_SERVER['SERVER_NAME'] . '/app/models/class.' . $classname. '.php');
+//}
+//
+//$inc_file = new base_model();
+
 function escape($value) {
     $record = mysql_real_escape_string($value);
 
@@ -11,6 +17,17 @@ function query($value) {
 
     return $sql;
 }
+
+function get_article($node) {
+
+    $sql = query("select * FROM pages where id='".escape($node)."';");
+
+    while($record = mysql_fetch_assoc($sql))
+
+    return $record;
+}
+
+$get_article = get_article($node);
 
 // Показать все записи списком
 
@@ -107,26 +124,6 @@ function save_article($save, $title_edit, $text_edit, $meta_title_edit, $meta_ke
     }
 
     return array($sql, $redirect);
-}
-
-// Отображение записи
-
-function show_article($node) {
-
-	$sql = query("select * FROM pages where id='".escape($node)."';");
-	
-	while($record = mysql_fetch_array($sql))
-	{
-		$title = $record['title'];
-		$content = $record['content'];
-		$link_text = $record['link_text'];
-		
-		$meta_title = $record['meta_title'];
-		$meta_keywords = $record['meta_keywords'];
-		$meta_desc = $record['meta_desc'];
-	}
-	
-	return array($title, $content, $meta_title, $meta_keywords, $meta_desc, $link_text);
 }
 
 // Mime-types
@@ -498,15 +495,11 @@ $preview = $upload[1];
 
 function search($title, $categories, $start, $num) {
 
-    $query = query("SELECT COUNT(*) FROM pages WHERE user_id='".$_SESSION['user_id']."'");
-
     $q = "SELECT pages.id, pages.title, categories.name FROM pages, categories WHERE pages.title LIKE '%$title%' AND pages.category_id=categories.id AND user_id='".escape($_SESSION['user_id'])."'";
 
     $t = "UNION SELECT pages.id, pages.title, categories.name FROM pages, categories WHERE pages.id LIKE '%$title%' AND pages.category_id=categories.id AND user_id='".escape($_SESSION['user_id'])."'";
 
     $s = "SELECT pages.id, pages.title, categories.name FROM pages, categories WHERE pages.category_id=categories.id AND user_id='".escape($_SESSION['user_id'])."'";
-
-
 
     if(!empty($title) && empty($categories)) { $q = $q . $t; }
 
@@ -516,7 +509,7 @@ function search($title, $categories, $start, $num) {
 
     if((empty($title)) && (!empty($categories))) { $q = "SELECT pages.*, categories.name FROM pages, categories WHERE pages.category_id LIKE '%$categories%' AND pages.category_id=categories.id AND user_id='".$_SESSION['user_id']."' order by pages.id desc";}
 
-    return array($q, $num, $query);
+    return array($q, $num);
 }
 
 function admin_url($link) {

@@ -6,11 +6,11 @@
 
     $num = 10;
 
-    $query = query("SELECT COUNT(*) FROM pages WHERE user_id='".$_SESSION['user_id']."'");
+    $query = query("SELECT * FROM pages WHERE user_id='".$_SESSION['user_id']."'");
 
     $page = $_GET['page'];
 
-    $posts = mysql_result($query, 0);
+    $posts = mysql_num_rows($query);
 
     if(!empty($title) || !empty($categories)) { $num = $posts;}
 

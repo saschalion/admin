@@ -28,7 +28,7 @@
                 'role' => 'auth'
             ),
             array(
-                'link' => '/admin/stat.php',
+                'link' => '/admin/statistic.php',
                 'text' => 'Статистика',
                 'icon' => 'stat',
                 'role' => 'auth'
