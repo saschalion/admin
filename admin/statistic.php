@@ -15,73 +15,182 @@
 
                         <?php
 
-                        $sth = query("SELECT created_at as date, id as pulse FROM files");
+                        $sth = query("SELECT created_at as date, id as pulse, id as customTooltip FROM files");
 
                         while($r = mysql_fetch_assoc($sth))
 
-                        $query.= "['$r[date]', $r[pulse]],";
+                        $query.= "{y: $r[pulse], customTooltip: $r[customTooltip]},";
 
                         $query = substr($query, 0, strlen($query) - 1);
 
                         ?>
 
-                        <script type="text/javascript">
-                            google.load("visualization", "1", {packages:["corechart"]});
-                            google.setOnLoadCallback(drawChart);
+<!--                        <script type="text/javascript">-->
+<!--                            google.load("visualization", "1", {packages:["corechart"]});-->
+<!--                            google.setOnLoadCallback(drawChart);-->
+<!---->
+<!--                            function drawChart() {-->
+<!---->
+<!--                                var data = new google.visualization.DataTable();-->
+<!---->
+<!---->
+<!--                                data.addColumn('string', 'Дата');-->
+<!--                                data.addColumn('number', 'Пульс');-->
+<!---->
+<!---->
+<!--                                for(i = 0; i <= --><?//=count($r)?><!--; i++) {-->
+<!--                                    data.addRows(-->
+<!--                                        [--><?//=$query?><!--]-->
+<!--                                    );-->
+<!--                                }-->
+<!---->
+<!--                                var options = {-->
+<!--                                    'title':'Пульс',-->
+<!--                                    'width': 450,-->
+<!--                                    'height': 240,-->
+<!--                                    vAxis: {-->
+<!--                                        maxValue: 90,-->
+<!--                                        minValue: 40-->
+<!--                                    }-->
+<!---->
+<!--                                };-->
+<!---->
+<!--                                chart = new google.visualization.LineChart(document.getElementById('chart_div2'));-->
+<!---->
+<!---->
+<!--                                chart.draw(data, options);-->
+<!--                            }-->
+<!---->
+<!--                            google.load('visualization', '1', {packages: ['gauge']});-->
+<!--                            google.setOnLoadCallback(drawVisualization);-->
+<!---->
+<!--                            function drawVisualization() {-->
+<!--                                // Create and populate the data table.-->
+<!--                                var data = google.visualization.arrayToDataTable([-->
+<!--                                    ['Label', 'Value'],-->
+<!--                                    ['Пульс', 80],-->
+<!--                                    ['Давление', 55],-->
+<!--                                    ['Холестерин', 68]-->
+<!--                                ]);-->
+<!---->
+<!--                                // Create and draw the visualization.-->
+<!--                                new google.visualization.Gauge(document.getElementById('visualization')).-->
+<!--                                        draw(data);-->
+<!--                            }-->
+<!---->
+<!--                        </script>-->
+<!--                        <div id="chart_div2"></div>-->
+<!--                        <br><br>-->
+<!--                        <div id="visualization"></div>-->
 
-                            function drawChart() {
 
-                                var data = new google.visualization.DataTable();
+                    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+                    <script type="text/javascript">
+                        $(function () {
+                            var chart;
+                            $(document).ready(function() {
 
+                                var array = [
+                                    {y: 20, customTooltip: 'Анальгин'},
+                                    {y: 40, customTooltip: 'Фарингосепт'}
+                                ];
 
-                                data.addColumn('string', 'Дата');
-                                data.addColumn('number', 'Пульс');
+                                chart = new Highcharts.Chart({
+                                    chart: {
+                                        renderTo: 'container',
+                                        type: 'spline'
+                                    },
+                                    title: {
+                                        text: 'Параметры пульса'
+                                    },
+                                    subtitle: {
+                                        text: 'с октября 1999 до ноября 2012'
+                                    },
+                                    xAxis: {
+                                        type: 'datetime'
+                                    },
+                                    yAxis: {
+                                        title: {
+                                            text: 'Пульс'
+                                        },
+                                        min: 0,
+                                        max: 160,
+                                        minorGridLineWidth: 0,
+                                        gridLineWidth: 0,
+                                        alternateGridColor: null,
+                                        plotBands: [{ // Light air
+                                            from: 20,
+                                            to: 70,
+                                            color: 'rgba(0, 255, 0, 0.1)',
+                                            label: {
+                                                text: 'Норма',
+                                                style: {
+                                                    color: '#606060'
+                                                }
+                                            }
+                                        }, { // Light breeze
+                                            from: 70,
+                                            to: 120,
+                                            color: 'rgba(255, 0, 0, 0.1)',
+                                            label: {
+                                                text: 'Выше нормы',
+                                                style: {
+                                                    color: '#606060'
+                                                }
+                                            }
+                                        }]
+                                    },
+                                    tooltip: {
+                                        formatter: function() {
+                                            return '' + '<b>' + this.point.config.customTooltip + '</b>' +
+                                                    Highcharts.dateFormat('%e. %b %Y, %H:00', this.x) +': '+ this.y + ' m/s';
+                                        }
+                                    },
+                                    plotOptions: {
+                                        spline: {
+                                            lineWidth: 4,
+                                            states: {
+                                                hover: {
+                                                    lineWidth: 5
+                                                }
+                                            },
+                                            marker: {
+                                                enabled: false,
+                                                states: {
+                                                    hover: {
+                                                        enabled: true,
+                                                        symbol: 'circle',
+                                                        radius: 5,
+                                                        lineWidth: 1
+                                                    }
+                                                }
+                                            },
+                                            pointInterval: 3600000, // one hour
+                                            pointStart: Date.UTC(2009, 9, 6, 0, 0, 0)
+                                        }
+                                    },
+                                    series: [{
+                                        name: 'Пульс',
+                                        data: [<?=$query?>]
 
-
-                                for(i = 0; i <= <?=count($r)?>; i++) {
-                                    data.addRows(
-                                        [<?=$query?>]
-                                    );
-                                }
-
-                                var options = {
-                                    'title':'Пульс',
-                                    'width': 450,
-                                    'height': 240,
-                                    vAxis: {
-                                        maxValue: 90,
-                                        minValue: 40
+                                    }]
+                                    ,
+                                    navigation: {
+                                        menuItemStyle: {
+                                            fontSize: '10px'
+                                        }
                                     }
+                                });
+                            });
 
-                                };
+                        });
+                    </script>
 
-                                chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
 
-                                
-                                chart.draw(data, options);
-                            }
+                    <script src="/admin/js/highcharts.js"></script>
+                    <script src="/admin/js/exporting.js"></script>
 
-                            google.load('visualization', '1', {packages: ['gauge']});
-                            google.setOnLoadCallback(drawVisualization);
-
-                            function drawVisualization() {
-                                // Create and populate the data table.
-                                var data = google.visualization.arrayToDataTable([
-                                    ['Label', 'Value'],
-                                    ['Пульс', 80],
-                                    ['Давление', 55],
-                                    ['Холестерин', 68]
-                                ]);
-
-                                // Create and draw the visualization.
-                                new google.visualization.Gauge(document.getElementById('visualization')).
-                                        draw(data);
-                            }
-
-                        </script>
-                        <div id="chart_div2"></div>
-                        <br><br>
-                        <div id="visualization"></div>
+                    <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 
 
                         <?php
