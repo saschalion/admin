@@ -14,8 +14,9 @@
 								{
 									$login = mysql_escape_string($_COOKIE['login']);
 									$password = mysql_escape_string($_COOKIE['password']);
+                                    $role = mysql_escape_string($_COOKIE['role']);
 
-									$query = "SELECT `id`
+									$query = "SELECT `id`, `role`
 												FROM `users`
 												WHERE `login`='{$login}' AND `password`='{$password}'
 												LIMIT 1";
@@ -25,6 +26,7 @@
 									{
 										$row = mysql_fetch_assoc($sql);
 										$_SESSION['user_id'] = $row['id'];
+                                        $_SESSION['role'] = $row['role'];
 									}
 								}
 							}

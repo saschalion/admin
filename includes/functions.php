@@ -73,6 +73,17 @@ function send_sql() {
     return $sql;
 }
 
+function role()
+{
+    $sql = query("select role from users where id = '".escape($_SESSION[user_id])."'");
+
+    $record = mysql_fetch_assoc($sql);
+
+    return $record['role'];
+}
+
+$role = role();
+
 // Удаление записи
 
 function delete_article($delete, $node) {

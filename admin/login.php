@@ -11,6 +11,7 @@ if (isset($_GET['logout']))
 		
 	setcookie('login', '', 0, "/");
 	setcookie('password', '', 0, "/");
+    setcookie('role', '', 0, "/");
 	// и переносим его на главную
 	header('Location: index.php');
 	exit;
@@ -43,13 +44,15 @@ if (!empty($_POST))
 		
 		// теперь хешируем введенный пароль как надо и повторям шаги, которые были описаны выше:
 		$password = md5(md5($_POST['password']) . $salt);
+
+
 		
 		// и пошло поехало...
 
 		// делаем запрос к БД
 		// и ищем юзера с таким логином и паролем
 
-		$query = "SELECT `id`
+		$query = "SELECT `id`, `role`
 					FROM `users`
 					WHERE `login`='{$login}' AND `password`='{$password}'
 					LIMIT 1";
@@ -62,7 +65,9 @@ if (!empty($_POST))
 
 			$row = mysql_fetch_assoc($sql);
 			$_SESSION['user_id'] = $row['id'];
-			
+            $_SESSION['role'] = $row['role'];
+
+            $role = $row['role'];
 			
 			// если пользователь решил "запомнить себя"
 			// то ставим ему в куку логин с хешем пароля
@@ -73,10 +78,19 @@ if (!empty($_POST))
 			{
 				setcookie('login', $login, time()+$time, "/");
 				setcookie('password', $password, time()+$time, "/");
+                setcookie('role', $role, time()+$time, "/");
 			}
 			
 			// и перекидываем его на закрытую страницу
-			header('Location: list.php');
+
+            if($_SESSION['role'] == 'admin') {
+                header('Location: list.php');
+            }
+
+            if($_SESSION['role'] == 'user') {
+                header('Location: gallery.php');
+            }
+
 			exit;
 
 			// не забываем, что для работы с сессионными данными, у нас в каждом скрипте должно присутствовать session_start();

@@ -19,9 +19,15 @@
 
                         while($r = mysql_fetch_assoc($sth))
 
+                        $row[] = $r;
+
                         $query.= "{y: $r[pulse], customTooltip: $r[customTooltip]},";
 
                         $query = substr($query, 0, strlen($query) - 1);
+
+                        $result = json_encode($row);
+
+                        echo $result;
 
                         ?>
 

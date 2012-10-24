@@ -45,13 +45,14 @@ if (!isset($_SESSION['id']))
 		// то пробуем авторизовать пользователя по этим логину и паролю
 		$login = mysql_real_escape_string($_COOKIE['login']);
 		$password = mysql_real_escape_string($_COOKIE['password']);
+        $role = mysql_real_escape_string($_COOKIE['role']);
 
 		// и по аналогии с авторизацией через форму:
 
 		// делаем запрос к БД
 		// и ищем юзера с таким логином и паролем
 
-		$query = "SELECT `id`
+		$query = "SELECT `id`, `role`
 					FROM `users`
 					WHERE `login`='{$login}' AND `password`='{$password}'
 					LIMIT 1";
@@ -65,6 +66,8 @@ if (!isset($_SESSION['id']))
 			$row = mysql_fetch_assoc($sql);
 			
 			$_SESSION['user_id'] = $row['id'];
+
+            $_SESSION['role_id'] = $row['role'];
 
 			// не забываем, что для работы с сессионными данными, у нас в каждом скрипте должно присутствовать session_start();
 		}

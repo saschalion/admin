@@ -8,11 +8,16 @@
 					<?php include('includes/menu.php'); ?>
                     <div class="text">
                         <h1>Список статей</h1>
-						<?php	
+						<?php
+
+                            if($role == 'user') {
+                               echo 'user';
+                            }
+
+
 							if (isset($_SESSION['user_id'])) {
                             echo '<p>Количество: ' . '<strong>' .  get_count_posts() . $array[1] . '</strong>' . '</p>';
                             include('includes/pagination-conf.php');
-
 						?>
 
 <!--                        --><?php
